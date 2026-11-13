@@ -102,3 +102,4 @@ Have an idea to make this portfolio even sharper? Submit an issue detailing:
 
 Maintained by **Muhammad Jahanzaib** ([@Jahanzaib-Arain24](https://github.com/Jahanzaib-Arain24)).  
 For inquiries, reach out via [arainjhanzaib@gmail.com](mailto:arainjhanzaib@gmail.com).
+

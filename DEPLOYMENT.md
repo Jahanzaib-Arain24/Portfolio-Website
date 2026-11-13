@@ -220,3 +220,4 @@ After deployment, verify the following:
 3. ✅ **Case Studies**: Interactive project modal displays full architecture details and links.
 4. ✅ **Contact Desk**: Submission triggers real-time toast notification and database record.
 5. ✅ **Admin Suite**: `/login` and `/admin` routes authenticate and permit live CMS updates.
+

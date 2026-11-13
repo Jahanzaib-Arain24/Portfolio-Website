@@ -186,3 +186,4 @@ The portfolio includes an integrated administrative back-office accessed via `/a
 - **Core Web Vitals**: Zero CLS via explicit aspect ratios and preloaded typography.
 - **SEO Ready**: Complete OpenGraph, Twitter card, canonical URL, and JSON-LD schema definitions.
 - **WCAG AA Compliance**: High-contrast ratios on all text elements, visible focus states, and aria labels for screen readers.
+
