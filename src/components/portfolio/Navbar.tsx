@@ -127,29 +127,29 @@ export default function Navbar({ resumeUrl = "/assets/Jahanzaib-Resume.pdf" }: N
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Prominent, Larger Royal Logo */}
+        {/* Balanced Modern Logo (Size 11) */}
         <button
           onClick={() => navigateToSection("home")}
-          className="flex items-center gap-3.5 group cursor-pointer text-left focus:outline-none"
+          className="flex items-center gap-3 group cursor-pointer text-left focus:outline-none"
         >
-          {/* Larger Icon Box */}
-          <div className="relative flex items-center justify-center w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-gradient-to-br from-[#181B22] via-[#12141A] to-[#0B0C0E] border border-[#F1BF00]/40 shadow-xl shadow-[#F1BF00]/10 group-hover:border-[#F1BF00] group-hover:shadow-[#F1BF00]/30 transition-all duration-300 shrink-0">
-            <span className="font-mono text-base sm:text-lg font-black text-[#F1BF00] group-hover:scale-110 transition-transform">
+          {/* Sized 11 Icon Box */}
+          <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#181B22] via-[#12141A] to-[#0B0C0E] border border-[#F1BF00]/35 shadow-lg shadow-[#F1BF00]/10 group-hover:border-[#F1BF00] group-hover:shadow-[#F1BF00]/25 transition-all duration-300 shrink-0">
+            <span className="font-mono text-base font-bold text-[#F1BF00] group-hover:scale-105 transition-transform">
               &lt;/&gt;
             </span>
             {/* Glowing Live Beacon */}
-            <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#F1BF00] border-2 border-[#0B0C0E] shadow-sm animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#F1BF00] border-2 border-[#0B0C0E] shadow-sm animate-pulse" />
           </div>
 
-          {/* Larger Brand Typography */}
+          {/* Balanced Brand Typography */}
           <div className="flex flex-col">
             <div className="flex items-center gap-1">
-              <span className="font-bold text-xl sm:text-2xl tracking-tight text-white group-hover:text-[#F1BF00] transition-colors font-serif-heading leading-tight">
+              <span className="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-[#F1BF00] transition-colors font-serif-heading leading-tight">
                 Jahanzaib
               </span>
-              <span className="text-[#F1BF00] font-black text-xl sm:text-2xl leading-none">.</span>
+              <span className="text-[#F1BF00] font-black text-lg sm:text-xl leading-none">.</span>
             </div>
-            <span className="text-[11px] sm:text-xs uppercase tracking-widest text-[#B5BAC1] font-mono font-semibold -mt-0.5">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#B5BAC1] font-mono font-medium -mt-0.5">
               Frontend Engineer
             </span>
           </div>
