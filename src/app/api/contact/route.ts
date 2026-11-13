@@ -2,6 +2,21 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendContactNotification } from "@/lib/mailer";
 
+export async function GET() {
+  try {
+    const messages = await prisma.contactMessage.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return NextResponse.json({ success: true, messages });
+  } catch (error) {
+    console.error("Error fetching messages:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -25,7 +40,6 @@ export async function POST(req: Request) {
     });
 
     // 2. Dispatch real email notification to your inbox
-    // Non-blocking so user never waits if SMTP has network latency
     sendContactNotification({
       name,
       email,
@@ -40,6 +54,29 @@ export async function POST(req: Request) {
     console.error("Error creating contact message:", error);
     return NextResponse.json(
       { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({ error: "Missing message ID" }, { status: 400 });
+    }
+
+    await prisma.contactMessage.delete({
+      where: { id },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Error deleting message:", error);
+    return NextResponse.json(
+      { error: "Failed to delete message" },
       { status: 500 }
     );
   }
