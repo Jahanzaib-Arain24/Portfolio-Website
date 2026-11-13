@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { GithubIcon, LinkedinIcon, FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
@@ -109,8 +111,13 @@ export default function Footer({ copyright, socialLinks: dbSocialLinks }: Footer
           })}
 
           <a
-            href="#home"
-            className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] hover:bg-[#F1BF00] hover:text-[#0B0C0E] transition-all ml-2"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.history.pushState(null, "", "/");
+            }}
+            className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] hover:bg-[#F1BF00] hover:text-[#0B0C0E] transition-all ml-2 cursor-pointer"
             title="Scroll to Top"
             aria-label="Scroll to Top"
           >

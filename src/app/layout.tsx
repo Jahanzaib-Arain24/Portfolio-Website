@@ -31,6 +31,14 @@ export const metadata: Metadata = {
     "Remote Developer",
   ],
   authors: [{ name: "Muhammad Jahanzaib" }],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Muhammad Jahanzaib — Frontend Engineer",
     description:

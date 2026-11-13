@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1BF00"/>
+      <stop offset="50%" stop-color="#FFDF6D"/>
+      <stop offset="100%" stop-color="#AA151B"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1BF00"/>
+      <stop offset="100%" stop-color="#AA151B"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Obsidian Base Background -->
+  <rect width="64" height="64" rx="16" fill="#0B0C0E" />
+  
+  <!-- Royal Gold & Crimson Accent Border -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="url(#borderGrad)" stroke-width="2.5" />
+  
+  <!-- Inner Glow Ambient -->
+  <circle cx="32" cy="32" r="18" fill="#F1BF00" opacity="0.08" />
+  
+  <!-- Stylized <MJ/> Code Monogram -->
+  <g fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Bracket < -->
+    <path d="M16 26 L10 32 L16 38" />
+    
+    <!-- Letter M -->
+    <path d="M21 38 V26 L26 33 L31 26 V38" stroke-width="2.8" />
+    
+    <!-- Letter J -->
+    <path d="M37 26 V35 C37 37 35.5 38 33.5 38" stroke-width="2.8" />
+    
+    <!-- Slash / -->
+    <path d="M42 38 L47 26" stroke-width="2.5" />
+    
+    <!-- Right Bracket > -->
+    <path d="M48 26 L54 32 L48 38" />
+  </g>
+  
+  <!-- Glowing Live Beacon Dot -->
+  <circle cx="52" cy="12" r="3.5" fill="#F1BF00" filter="url(#glow)" />
+  <circle cx="52" cy="12" r="2" fill="#FFFFFF" />
+</svg>
+

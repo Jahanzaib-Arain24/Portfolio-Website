@@ -165,8 +165,17 @@ export default function HeroSection({
             {/* Action Buttons: Royal Gold + Crimson Glass Pill */}
             <div className="flex flex-wrap items-center gap-4 mb-10">
               <a
-                href="#projects"
-                className="btn-royal-gold"
+                href="/projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById("projects");
+                  if (el) {
+                    const topOffset = el.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: topOffset, behavior: "smooth" });
+                    window.history.pushState(null, "", "/projects");
+                  }
+                }}
+                className="btn-royal-gold cursor-pointer"
               >
                 <span>{primaryCTA || "Explore Projects"}</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />

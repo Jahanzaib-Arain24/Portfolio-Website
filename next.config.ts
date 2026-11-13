@@ -26,6 +26,15 @@ const nextConfig: NextConfig = {
       },
     },
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/:section(about|skills|projects|experience|certifications|education|contact)",
+        destination: "/",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
