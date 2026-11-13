@@ -36,6 +36,7 @@ import {
   FileSpreadsheet,
   Workflow,
   Laptop,
+  Pin,
 } from "lucide-react";
 
 interface SkillsSectionProps {
@@ -241,9 +242,16 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
                           <SkillIcon className="w-5 h-5" />
                         </div>
                         <div className="min-w-0">
-                          <h4 className="text-sm sm:text-[15px] font-bold text-white group-hover:text-[#FFF8DC] transition-colors leading-snug">
-                            {skill.name}
-                          </h4>
+                          <div className="flex items-center gap-1.5">
+                            <h4 className="text-sm sm:text-[15px] font-bold text-white group-hover:text-[#FFF8DC] transition-colors leading-snug truncate">
+                              {skill.name}
+                            </h4>
+                            {skill.pinned && (
+                              <span className="p-0.5 px-1 rounded-full bg-[#AA151B]/40 border border-[#F1BF00]/40 text-[#F1BF00] flex-shrink-0" title="Pinned Core Skill">
+                                <Pin className="w-2.5 h-2.5 fill-[#F1BF00] rotate-45" />
+                              </span>
+                            )}
+                          </div>
                           <div className="flex items-center gap-2 mt-0.5">
                             <span className="text-[10px] font-mono uppercase tracking-wider text-[#999999]">
                               {badge}

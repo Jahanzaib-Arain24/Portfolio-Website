@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const rawProjects = await prisma.project.findMany({
-      orderBy: { order: "asc" },
+      orderBy: [{ pinned: "desc" }, { order: "asc" }],
     });
     const projects = rawProjects.map((p) => ({
       ...p,
@@ -38,6 +38,7 @@ export async function POST(req: Request) {
       githubUrl,
       imageUrl,
       featured,
+      pinned,
       order,
     } = body;
 
@@ -53,6 +54,7 @@ export async function POST(req: Request) {
         githubUrl: githubUrl || null,
         imageUrl: imageUrl || null,
         featured: Boolean(featured),
+        pinned: Boolean(pinned),
         order: Number(order) || 0,
       },
     });
@@ -84,6 +86,7 @@ export async function PUT(req: Request) {
       githubUrl,
       imageUrl,
       featured,
+      pinned,
       order,
     } = body;
 
@@ -100,6 +103,7 @@ export async function PUT(req: Request) {
         githubUrl,
         imageUrl,
         featured: Boolean(featured),
+        pinned: Boolean(pinned),
         order: Number(order) || 0,
       },
     });
@@ -107,6 +111,41 @@ export async function PUT(req: Request) {
     return NextResponse.json({ success: true, project: updatedProject });
   } catch (error) {
     return NextResponse.json({ error: "Failed to update project" }, { status: 500 });
+  }
+}
+
+// Batch Reorder & Pin Status endpoint
+export async function PATCH(req: Request) {
+  try {
+    const cookieStore = await cookies();
+    const session = cookieStore.get("admin_session");
+    if (!session || session.value !== "authenticated_jahanzaib_session_2026") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const { items } = body; // Array of { id: string, order: number, pinned?: boolean }
+
+    if (!Array.isArray(items)) {
+      return NextResponse.json({ error: "Items array required" }, { status: 400 });
+    }
+
+    await prisma.$transaction(
+      items.map((item) =>
+        prisma.project.update({
+          where: { id: item.id },
+          data: {
+            order: item.order,
+            ...(typeof item.pinned === "boolean" ? { pinned: item.pinned } : {}),
+          },
+        })
+      )
+    );
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Reorder projects error:", error);
+    return NextResponse.json({ error: "Failed to reorder projects" }, { status: 500 });
   }
 }
 
@@ -131,4 +170,3 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ error: "Failed to delete project" }, { status: 500 });
   }
 }
-

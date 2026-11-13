@@ -37,6 +37,7 @@ export interface ProjectData {
   githubUrl?: string | null;
   imageUrl?: string | null;
   featured: boolean;
+  pinned?: boolean;
   order: number;
 }
 
@@ -44,6 +45,7 @@ export interface SkillItemData {
   id: string;
   name: string;
   proficiency: number;
+  pinned?: boolean;
   order: number;
 }
 

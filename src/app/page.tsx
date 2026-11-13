@@ -18,9 +18,9 @@ export default async function PortfolioPage() {
     include: { socialLinks: { orderBy: { order: "asc" } } },
   });
 
-  // 2. Fetch Projects
+  // 2. Fetch Projects (Pinned first, then custom drag order)
   const rawProjects = await prisma.project.findMany({
-    orderBy: { order: "asc" },
+    orderBy: [{ pinned: "desc" }, { order: "asc" }],
   });
 
   const projects = rawProjects.map((p) => ({
@@ -29,10 +29,14 @@ export default async function PortfolioPage() {
     highlights: JSON.parse(p.highlights || "[]"),
   }));
 
-  // 3. Fetch Skills with Categories
+  // 3. Fetch Skills with Categories (Pinned first, then custom drag order)
   const categories = await prisma.skillCategory.findMany({
     orderBy: { order: "asc" },
-    include: { skills: { orderBy: { order: "asc" } } },
+    include: {
+      skills: {
+        orderBy: [{ pinned: "desc" }, { order: "asc" }],
+      },
+    },
   });
 
   // 4. Fetch Experiences
