@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Allow phone access over Wi-Fi for hot reload / Fast Refresh
+  allowedDevOrigins: ["192.168.100.50", "192.168.100.50:3000", "localhost:3000"],
+
   // Compress assets using Gzip / Brotli for faster delivery
   compress: true,
 
