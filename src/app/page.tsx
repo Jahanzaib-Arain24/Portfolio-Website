@@ -12,16 +12,44 @@ import Footer from "@/components/portfolio/Footer";
 export const dynamic = "force-dynamic";
 
 export default async function PortfolioPage() {
-  // 1. Fetch Profile
-  const profile = await prisma.profile.findUnique({
-    where: { id: "default-profile" },
-    include: { socialLinks: { orderBy: { order: "asc" } } },
-  });
-
-  // 2. Fetch Projects (Pinned first, then custom drag order)
-  const rawProjects = await prisma.project.findMany({
-    orderBy: [{ pinned: "desc" }, { order: "asc" }],
-  });
+  // Fetch all portfolio data in parallel via Promise.all (Zero waterfall latency)
+  const [
+    profile,
+    rawProjects,
+    categories,
+    rawExperiences,
+    certifications,
+    education,
+    settings,
+  ] = await Promise.all([
+    prisma.profile.findUnique({
+      where: { id: "default-profile" },
+      include: { socialLinks: { orderBy: { order: "asc" } } },
+    }),
+    prisma.project.findMany({
+      orderBy: [{ pinned: "desc" }, { order: "asc" }],
+    }),
+    prisma.skillCategory.findMany({
+      orderBy: { order: "asc" },
+      include: {
+        skills: {
+          orderBy: [{ pinned: "desc" }, { order: "asc" }],
+        },
+      },
+    }),
+    prisma.experience.findMany({
+      orderBy: { order: "asc" },
+    }),
+    prisma.certification.findMany({
+      orderBy: { order: "asc" },
+    }),
+    prisma.education.findMany({
+      orderBy: { order: "asc" },
+    }),
+    prisma.siteSettings.findUnique({
+      where: { id: "default-settings" },
+    }),
+  ]);
 
   const projects = rawProjects.map((p) => ({
     ...p,
@@ -29,39 +57,10 @@ export default async function PortfolioPage() {
     highlights: JSON.parse(p.highlights || "[]"),
   }));
 
-  // 3. Fetch Skills with Categories (Pinned first, then custom drag order)
-  const categories = await prisma.skillCategory.findMany({
-    orderBy: { order: "asc" },
-    include: {
-      skills: {
-        orderBy: [{ pinned: "desc" }, { order: "asc" }],
-      },
-    },
-  });
-
-  // 4. Fetch Experiences
-  const rawExperiences = await prisma.experience.findMany({
-    orderBy: { order: "asc" },
-  });
-
   const experiences = rawExperiences.map((e) => ({
     ...e,
     achievements: JSON.parse(e.achievements || "[]"),
   }));
-
-  // 5. Fetch Certifications & Education
-  const certifications = await prisma.certification.findMany({
-    orderBy: { order: "asc" },
-  });
-
-  const education = await prisma.education.findMany({
-    orderBy: { order: "asc" },
-  });
-
-  // 6. Fetch Settings
-  const settings = await prisma.siteSettings.findUnique({
-    where: { id: "default-settings" },
-  });
 
   const counters = profile ? JSON.parse(profile.heroCounters || "[]") : [];
 
