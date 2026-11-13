@@ -60,7 +60,7 @@ export default function ContactSection({ email, phone, location }: ContactSectio
   };
 
   return (
-    <AnimatedSection id="contact" className="py-16 sm:py-28 relative bg-[#0B0C0E]">
+    <AnimatedSection id="contact" className="py-16 sm:py-28 relative bg-[#0B0C0E] overflow-hidden">
       <Toaster position="bottom-right" />
       <div className="glow-orb-crimson left-1/3 -bottom-10 opacity-25" />
 

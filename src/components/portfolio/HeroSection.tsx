@@ -119,15 +119,15 @@ export default function HeroSection({
       <div className="glow-orb-gold top-48 right-0 opacity-50" />
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-w-0">
           
           {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7"
+            className="lg:col-span-7 min-w-0"
           >
             {/* Live Gold Beacon Status Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] text-[11px] sm:text-xs font-semibold mb-6 shadow-sm backdrop-blur-md max-w-full">
@@ -235,7 +235,7 @@ export default function HeroSection({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-5 relative mt-8 lg:mt-0"
+            className="lg:col-span-5 relative mt-8 lg:mt-0 min-w-0"
           >
             {/* Top-Left Floating Metric */}
             <div className="absolute -top-6 left-2 sm:-top-8 sm:-left-5 z-20 flex items-center gap-2.5 sm:gap-3 py-2 sm:py-2.5 px-3 sm:px-4 rounded-2xl bg-[#15171C]/95 border border-[#F1BF00]/30 backdrop-blur-xl shadow-2xl">

@@ -126,9 +126,9 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
           </p>
         </div>
 
-        {/* Interactive Category Switcher Bar (Smooth Touch-Scrollable on mobile, Centered Pill on sm+) */}
-        <div className="flex sm:justify-center mb-8 sm:mb-10 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="inline-flex sm:flex-wrap items-center justify-start sm:justify-center gap-1.5 p-1.5 sm:p-2 rounded-2xl bg-[#12141A]/90 border border-white/10 backdrop-blur-xl shadow-2xl shrink-0">
+        {/* Interactive Category Switcher Bar (Clean 2x2 Matrix on Mobile, Centered Pill Bar on lg+) */}
+        <div className="flex justify-center mb-8 sm:mb-10 w-full">
+          <div className="grid grid-cols-2 lg:flex lg:flex-row items-center justify-center gap-2 p-1.5 sm:p-2 rounded-2xl bg-[#12141A]/90 border border-white/10 backdrop-blur-xl shadow-2xl w-full lg:w-auto">
             {categories.map((cat) => {
               const Icon = getCategoryIcon(cat.name);
               const isSelected = currentCategory?.id === cat.id;
@@ -136,7 +136,7 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`relative flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-200 cursor-pointer whitespace-nowrap shrink-0 ${
+                  className={`relative flex items-center justify-between gap-2 px-3 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-200 cursor-pointer ${
                     isSelected
                       ? "text-[#0B0C0E]"
                       : "text-[#CAD5E2] hover:text-white hover:bg-white/[0.04]"
@@ -149,14 +149,18 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
                       className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#F1BF00] to-[#e0b000] shadow-lg shadow-[#F1BF00]/25"
                     />
                   )}
-                  <Icon
-                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 relative z-10 ${
-                      isSelected ? "text-[#0B0C0E]" : "text-[#F1BF00]"
-                    }`}
-                  />
-                  <span className="relative z-10">{cat.name}</span>
+                  <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 relative z-10">
+                    <Icon
+                      className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${
+                        isSelected ? "text-[#0B0C0E]" : "text-[#F1BF00]"
+                      }`}
+                    />
+                    <span className="truncate text-[11px] sm:text-xs lg:text-sm font-bold sm:font-semibold text-left">
+                      {cat.name}
+                    </span>
+                  </div>
                   <span
-                    className={`relative z-10 text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded-md ${
+                    className={`relative z-10 text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded-md shrink-0 ${
                       isSelected
                         ? "bg-[#0B0C0E]/15 text-[#0B0C0E] font-bold"
                         : "bg-white/5 text-[#999999]"

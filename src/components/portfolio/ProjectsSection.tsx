@@ -16,7 +16,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
   return (
-    <AnimatedSection id="projects" className="py-16 sm:py-28 relative bg-[#0B0C0E]">
+    <AnimatedSection id="projects" className="py-16 sm:py-28 relative bg-[#0B0C0E] overflow-hidden">
       <div className="glow-orb-crimson right-0 top-1/3 opacity-25" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -162,93 +162,108 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         </div>
       </div>
 
-      {/* Case Study Detail Modal (Mobile-Optimized Padding & Full-Width Actions) */}
+      {/* Case Study Detail Modal (Mobile-Optimized with Sticky Header & Sticky Close) */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#0B0C0E]/85 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-[#0B0C0E]/90 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-[#15171C] border border-[#F1BF00]/30 p-4 sm:p-8 shadow-2xl text-left"
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 50, scale: 0.95 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-3xl h-[92vh] sm:h-auto sm:max-h-[88vh] flex flex-col rounded-t-3xl sm:rounded-3xl bg-[#12141A] border-t sm:border border-[#F1BF00]/30 shadow-2xl text-left overflow-hidden"
             >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#999999] hover:text-white border border-white/5 cursor-pointer"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="inline-block px-3 py-1 rounded-md bg-[#F1BF00]/15 border border-[#F1BF00]/30 text-[#F1BF00] text-xs font-semibold uppercase mb-3">
-                {selectedProject.type}
-              </div>
-
-              <h2 className="text-xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2 font-serif-heading pr-8">
-                {selectedProject.title}
-              </h2>
-              <p className="text-[#F1BF00] text-xs sm:text-sm font-semibold mb-5 sm:mb-6">
-                {selectedProject.tagline}
-              </p>
-
-              {selectedProject.imageUrl && (
-                <div className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-[#0B0C0E] border border-white/10 mb-5 sm:mb-6 shadow-xl">
-                  <Image
-                    src={selectedProject.imageUrl}
-                    alt={selectedProject.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 750px"
-                    className="object-cover object-top"
-                  />
+              {/* Sticky Top Header Bar with Pinned Close Button */}
+              <div className="sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[#15171C]/95 backdrop-blur-xl border-b border-white/10 shrink-0">
+                <div className="flex items-center gap-2 min-w-0 pr-2">
+                  <span className="px-2 py-0.5 rounded-md bg-[#F1BF00]/15 border border-[#F1BF00]/30 text-[#F1BF00] text-[10px] font-mono font-semibold uppercase shrink-0">
+                    {selectedProject.type}
+                  </span>
+                  <h3 className="text-sm sm:text-base font-bold text-white font-serif-heading truncate">
+                    {selectedProject.title}
+                  </h3>
                 </div>
-              )}
 
-              <div className="mb-5 sm:mb-6">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#999999] mb-2">
-                  System Overview
-                </h4>
-                <p className="text-[#CAD5E2] text-xs sm:text-sm leading-relaxed">
-                  {selectedProject.description}
-                </p>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="p-1.5 sm:p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#999999] hover:text-white border border-white/10 cursor-pointer shrink-0 transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
               </div>
 
-              <div className="mb-5 sm:mb-6">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#999999] mb-2.5 sm:mb-3">
-                  Architecture &amp; Engineering Highlights
-                </h4>
-                <div className="space-y-2 sm:space-y-2.5">
-                  {selectedProject.highlights.map((h, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#CAD5E2]">
-                      <CheckCircle className="w-4 h-4 text-[#F1BF00] shrink-0 mt-0.5" />
-                      <span>{h}</span>
-                    </div>
-                  ))}
+              {/* Scrollable Modal Content */}
+              <div className="overflow-y-auto p-4 sm:p-8 space-y-5 flex-1">
+                {selectedProject.imageUrl && (
+                  <div className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-[#0B0C0E] border border-white/10 shadow-xl shrink-0">
+                    <Image
+                      src={selectedProject.imageUrl}
+                      alt={selectedProject.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 750px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                )}
+
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-1 font-serif-heading">
+                    {selectedProject.title}
+                  </h2>
+                  <p className="text-[#F1BF00] text-xs sm:text-sm font-semibold">
+                    {selectedProject.tagline}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#999999] mb-1.5">
+                    System Overview
+                  </h4>
+                  <p className="text-[#CAD5E2] text-xs sm:text-sm leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#999999] mb-2">
+                    Architecture &amp; Engineering Highlights
+                  </h4>
+                  <div className="space-y-2">
+                    {selectedProject.highlights.map((h, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#CAD5E2]">
+                        <CheckCircle className="w-4 h-4 text-[#F1BF00] shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#999999] mb-2">
+                    Technologies Deployed
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedProject.techStack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[11px] sm:text-xs font-mono px-2.5 sm:px-3 py-1 rounded-lg bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <div className="mb-6 sm:mb-8">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#999999] mb-2">
-                  Technologies Deployed
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {selectedProject.techStack.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[11px] sm:text-xs font-mono px-2.5 sm:px-3 py-1 rounded-lg bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4 border-t border-white/10">
+              {/* Dedicated Sticky Action Footer */}
+              <div className="px-4 sm:px-8 py-3.5 bg-[#15171C]/95 backdrop-blur-xl border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 shrink-0">
                 {selectedProject.liveUrl && (
                   <a
                     href={selectedProject.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-royal-gold text-xs justify-center"
+                    className="btn-royal-gold text-xs justify-center py-3"
                   >
                     <span>Launch Live System</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -259,7 +274,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-royal-crimson text-xs justify-center"
+                    className="btn-royal-crimson text-xs justify-center py-3"
                   >
                     <GithubIcon className="w-3.5 h-3.5" />
                     <span>View Repository</span>
