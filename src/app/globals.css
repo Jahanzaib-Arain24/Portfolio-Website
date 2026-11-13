@@ -30,9 +30,10 @@
 html {
   scroll-behavior: smooth;
   font-family: var(--font-inter);
-  overflow-x: hidden;
-  max-width: 100%;
-  width: 100%;
+}
+
+section[id], div[id] {
+  scroll-margin-top: 80px;
 }
 
 body {

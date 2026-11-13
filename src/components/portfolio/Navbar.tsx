@@ -35,16 +35,19 @@ export default function Navbar({ resumeUrl = "/assets/Jahanzaib-Resume.pdf" }: N
       window.history.pushState(null, "", cleanPath);
     }
 
-    if (sectionId === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
+    // Wait 120ms so mobile menu drawer unmount/collapse doesn't cancel scroll
+    setTimeout(() => {
+      if (sectionId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
 
-    const el = document.getElementById(sectionId);
-    if (el) {
-      const topOffset = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: topOffset, behavior: "smooth" });
-    }
+      const el = document.getElementById(sectionId);
+      if (el) {
+        const topOffset = el.getBoundingClientRect().top + window.scrollY - 75;
+        window.scrollTo({ top: topOffset, behavior: "smooth" });
+      }
+    }, 120);
   };
 
   // Initial load check: if URL is /projects, /about, etc., smoothly scroll to it

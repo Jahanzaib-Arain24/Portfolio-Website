@@ -138,20 +138,20 @@ export default function HeroSection({
               <span className="leading-snug">{badge || "Available for Full-Time Roles & High-Impact Contracts (Remote Worldwide)"}</span>
             </div>
 
-            {/* Greeting & Name Heading */}
+            {/* Greeting & Name Heading (Ensured single line on mobile) */}
             <p className="text-[#999999] font-mono text-xs sm:text-sm tracking-wider uppercase mb-2">
               {greeting || "Hi There, I'm"}
             </p>
-            <h1 className="text-3xl sm:text-5xl lg:text-[62px] font-bold text-white mb-4 leading-[1.15] sm:leading-[1.12] font-serif-heading">
+            <h1 className="text-[25px] xs:text-[28px] sm:text-5xl lg:text-[62px] font-bold text-white mb-3 sm:mb-4 leading-tight font-serif-heading">
               {name ? name.split(" ")[0] : "Muhammad"}{" "}
-              <span className="text-gradient-vos block sm:inline">
+              <span className="text-gradient-vos inline">
                 {name ? name.split(" ").slice(1).join(" ") : "Jahanzaib."}
               </span>
             </h1>
 
-            {/* Interactive Typewriter Effect */}
-            <div className="mb-6 min-h-[32px] sm:min-h-[38px] flex items-center">
-              <h2 className="text-lg sm:text-2xl lg:text-[26px] font-bold text-white flex items-center gap-2 flex-wrap">
+            {/* Interactive Typewriter Effect (Single line on mobile) */}
+            <div className="mb-6 min-h-[28px] sm:min-h-[38px] flex items-center">
+              <h2 className="text-sm xs:text-base sm:text-2xl lg:text-[26px] font-bold text-white flex items-center gap-1.5 sm:gap-2 whitespace-nowrap overflow-x-hidden">
                 <span>I Am Into</span>
                 <TypingRoles roles={typingRolesList} />
               </h2>
