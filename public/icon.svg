@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Royal Gold Gradient -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0A0" />
+      <stop offset="40%" stop-color="#F1BF00" />
+      <stop offset="100%" stop-color="#E5A700" />
+    </linearGradient>
+
+    <!-- Border Accent Gradient -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1BF00" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#AA151B" stop-opacity="0.65" />
+    </linearGradient>
+
+    <!-- Glowing Live Beacon Filter -->
+    <filter id="beaconGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Obsidian Base Background -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0B0C0E" />
+
+  <!-- Subtle Inner Radial Atmosphere -->
+  <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#F1BF00" stop-opacity="0.12" />
+    <stop offset="100%" stop-color="#0B0C0E" stop-opacity="0" />
+  </radialGradient>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#innerGlow)" />
+
+  <!-- Luxury Gold Border Frame -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="none" stroke="url(#borderGradient)" stroke-width="2.5" />
+
+  <!-- Signature Code Symbol < / > (Matching Header Logo) -->
+  <g fill="none" stroke="url(#goldGradient)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Bracket < -->
+    <path d="M22 23 L13 32 L22 41" stroke-width="4.5" />
+    
+    <!-- Center Slash / -->
+    <path d="M37 20 L27 44" stroke-width="4" />
+    
+    <!-- Right Bracket > -->
+    <path d="M42 23 L51 32 L42 41" stroke-width="4.5" />
+  </g>
+
+  <!-- Live Pulse Beacon Ring -->
+  <circle cx="51" cy="13" r="4.5" fill="#F1BF00" opacity="0.4" filter="url(#beaconGlow)" />
+  <!-- Live Beacon Core Dot -->
+  <circle cx="51" cy="13" r="3" fill="#F1BF00" />
+  <circle cx="51" cy="13" r="1.5" fill="#FFFFFF" />
+</svg>
