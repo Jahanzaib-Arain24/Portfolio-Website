@@ -16,26 +16,26 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
   return (
-    <AnimatedSection id="projects" className="py-28 relative bg-[#0B0C0E]">
+    <AnimatedSection id="projects" className="py-16 sm:py-28 relative bg-[#0B0C0E]">
       <div className="glow-orb-crimson right-0 top-1/3 opacity-25" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header - Perfectly Centered */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Portfolio</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-4 font-serif-heading">
+          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-3 sm:mb-4 font-serif-heading">
             Featured <span className="text-gradient-vos">Case Studies</span>
           </h2>
-          <p className="text-[#999999] text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-[#999999] text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
             Real enterprise and digital platforms shipped to users worldwide, engineered for modern performance and conversion.
           </p>
         </div>
 
         {/* Projects Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {projects.map((project) => (
             <div
               key={project.id}
@@ -80,11 +80,11 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
                 )}
 
-                <div className="p-6 pb-2">
+                <div className="p-4 sm:p-6 pb-2">
                   {/* Fallback Header Badges if no image */}
                   {!project.imageUrl && (
                     <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="text-[11px] font-mono uppercase px-2.5 py-1 rounded-md bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]">
+                      <span className="text-[10px] sm:text-[11px] font-mono uppercase px-2.5 py-1 rounded-md bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]">
                         {project.type}
                       </span>
                       {project.featured && (
@@ -96,10 +96,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   )}
 
                   {/* Title & Tagline */}
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#FFF8DC] transition-colors font-serif-heading">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 sm:mb-2 group-hover:text-[#FFF8DC] transition-colors font-serif-heading">
                     {project.title}
                   </h3>
-                  <p className="text-[#999999] text-xs sm:text-sm line-clamp-2 mb-5 leading-relaxed">
+                  <p className="text-[#999999] text-xs sm:text-sm line-clamp-2 mb-4 sm:mb-5 leading-relaxed">
                     {project.tagline}
                   </p>
 
@@ -108,13 +108,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     {project.techStack.slice(0, 4).map((tech, idx) => (
                       <span
                         key={idx}
-                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]"
+                        className="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.techStack.length > 4 && (
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-[#999999]">
+                      <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-[#999999]">
                         +{project.techStack.length - 4}
                       </span>
                     )}
@@ -123,10 +123,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
               </div>
 
               {/* Card Footer Actions */}
-              <div className="mt-auto px-6 pb-6 pt-4 border-t border-white/5 flex items-center justify-between">
+              <div className="mt-auto px-4 sm:px-6 pb-4 sm:pb-6 pt-3.5 sm:pt-4 border-t border-white/5 flex items-center justify-between">
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="text-xs font-semibold text-[#F1BF00] hover:text-[#FFF8DC] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                  className="text-xs font-semibold text-[#F1BF00] hover:text-[#FFF8DC] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform cursor-pointer"
                 >
                   <span>Case Study</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -162,19 +162,20 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         </div>
       </div>
 
-      {/* Case Study Detail Modal */}
+      {/* Case Study Detail Modal (Mobile-Optimized Padding & Full-Width Actions) */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#0B0C0E]/85 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#0B0C0E]/85 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-3xl bg-[#15171C] border border-[#F1BF00]/30 p-6 sm:p-8 shadow-2xl text-left"
+              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-[#15171C] border border-[#F1BF00]/30 p-4 sm:p-8 shadow-2xl text-left"
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#999999] hover:text-white border border-white/5"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#999999] hover:text-white border border-white/5 cursor-pointer"
+                aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -183,15 +184,15 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 {selectedProject.type}
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 font-serif-heading">
+              <h2 className="text-xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2 font-serif-heading pr-8">
                 {selectedProject.title}
               </h2>
-              <p className="text-[#F1BF00] text-sm font-semibold mb-6">
+              <p className="text-[#F1BF00] text-xs sm:text-sm font-semibold mb-5 sm:mb-6">
                 {selectedProject.tagline}
               </p>
 
               {selectedProject.imageUrl && (
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#0B0C0E] border border-white/10 mb-6 shadow-xl">
+                <div className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-[#0B0C0E] border border-white/10 mb-5 sm:mb-6 shadow-xl">
                   <Image
                     src={selectedProject.imageUrl}
                     alt={selectedProject.title}
@@ -202,20 +203,20 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
               )}
 
-              <div className="mb-6">
+              <div className="mb-5 sm:mb-6">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-[#999999] mb-2">
                   System Overview
                 </h4>
-                <p className="text-[#CAD5E2] text-sm leading-relaxed">
+                <p className="text-[#CAD5E2] text-xs sm:text-sm leading-relaxed">
                   {selectedProject.description}
                 </p>
               </div>
 
-              <div className="mb-6">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#999999] mb-3">
-                  Architecture & Engineering Highlights
+              <div className="mb-5 sm:mb-6">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-[#999999] mb-2.5 sm:mb-3">
+                  Architecture &amp; Engineering Highlights
                 </h4>
-                <div className="space-y-2.5">
+                <div className="space-y-2 sm:space-y-2.5">
                   {selectedProject.highlights.map((h, idx) => (
                     <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#CAD5E2]">
                       <CheckCircle className="w-4 h-4 text-[#F1BF00] shrink-0 mt-0.5" />
@@ -225,7 +226,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
               </div>
 
-              <div className="mb-8">
+              <div className="mb-6 sm:mb-8">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-[#999999] mb-2">
                   Technologies Deployed
                 </h4>
@@ -233,7 +234,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   {selectedProject.techStack.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-mono px-3 py-1 rounded-lg bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]"
+                      className="text-[11px] sm:text-xs font-mono px-2.5 sm:px-3 py-1 rounded-lg bg-[#0B0C0E] border border-white/5 text-[#CAD5E2]"
                     >
                       {tech}
                     </span>
@@ -241,13 +242,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4 border-t border-white/10">
                 {selectedProject.liveUrl && (
                   <a
                     href={selectedProject.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-royal-gold text-xs"
+                    className="btn-royal-gold text-xs justify-center"
                   >
                     <span>Launch Live System</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -258,7 +259,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-royal-crimson text-xs"
+                    className="btn-royal-crimson text-xs justify-center"
                   >
                     <GithubIcon className="w-3.5 h-3.5" />
                     <span>View Repository</span>

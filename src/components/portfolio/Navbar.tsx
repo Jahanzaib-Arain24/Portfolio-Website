@@ -127,14 +127,14 @@ export default function Navbar({ resumeUrl = "/assets/Jahanzaib-Resume.pdf" }: N
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Balanced Modern Logo (Size 11) */}
+        {/* Balanced Modern Logo (Size 11 on Desktop, Size 10 on Mobile) */}
         <button
           onClick={() => navigateToSection("home")}
-          className="flex items-center gap-3 group cursor-pointer text-left focus:outline-none"
+          className="flex items-center gap-2.5 sm:gap-3 group cursor-pointer text-left focus:outline-none"
         >
-          {/* Sized 11 Icon Box */}
-          <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#181B22] via-[#12141A] to-[#0B0C0E] border border-[#F1BF00]/35 shadow-lg shadow-[#F1BF00]/10 group-hover:border-[#F1BF00] group-hover:shadow-[#F1BF00]/25 transition-all duration-300 shrink-0">
-            <span className="font-mono text-base font-bold text-[#F1BF00] group-hover:scale-105 transition-transform">
+          {/* Sized Icon Box */}
+          <div className="relative flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-[#181B22] via-[#12141A] to-[#0B0C0E] border border-[#F1BF00]/35 shadow-lg shadow-[#F1BF00]/10 group-hover:border-[#F1BF00] group-hover:shadow-[#F1BF00]/25 transition-all duration-300 shrink-0">
+            <span className="font-mono text-sm sm:text-base font-bold text-[#F1BF00] group-hover:scale-105 transition-transform">
               &lt;/&gt;
             </span>
             {/* Glowing Live Beacon */}
@@ -144,12 +144,12 @@ export default function Navbar({ resumeUrl = "/assets/Jahanzaib-Resume.pdf" }: N
           {/* Balanced Brand Typography */}
           <div className="flex flex-col">
             <div className="flex items-center gap-1">
-              <span className="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-[#F1BF00] transition-colors font-serif-heading leading-tight">
+              <span className="font-bold text-base sm:text-xl tracking-tight text-white group-hover:text-[#F1BF00] transition-colors font-serif-heading leading-tight">
                 Jahanzaib
               </span>
-              <span className="text-[#F1BF00] font-black text-lg sm:text-xl leading-none">.</span>
+              <span className="text-[#F1BF00] font-black text-base sm:text-xl leading-none">.</span>
             </div>
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#B5BAC1] font-mono font-medium -mt-0.5">
+            <span className="text-[9px] sm:text-[11px] uppercase tracking-widest text-[#B5BAC1] font-mono font-medium -mt-0.5">
               Frontend Engineer
             </span>
           </div>
@@ -218,7 +218,7 @@ export default function Navbar({ resumeUrl = "/assets/Jahanzaib-Resume.pdf" }: N
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#0B0C0E]/98 border-b border-[#F1BF00]/20 px-6 py-6 shadow-2xl backdrop-blur-2xl"
+            className="lg:hidden bg-[#0B0C0E]/98 border-b border-[#F1BF00]/20 px-5 sm:px-6 py-6 shadow-2xl backdrop-blur-2xl max-h-[85vh] overflow-y-auto"
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (

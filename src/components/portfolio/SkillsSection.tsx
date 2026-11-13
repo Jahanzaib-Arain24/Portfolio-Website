@@ -105,7 +105,7 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
     : 0;
 
   return (
-    <AnimatedSection id="skills" className="py-28 relative bg-[#0B0C0E] overflow-hidden">
+    <AnimatedSection id="skills" className="py-16 sm:py-28 relative bg-[#0B0C0E] overflow-hidden">
       {/* Ambient Radial Backlights */}
       <div className="glow-orb-gold -right-24 top-1/3 opacity-20" />
       <div className="glow-orb-crimson -left-24 bottom-1/4 opacity-20" />
@@ -113,22 +113,22 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Technical Stack</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-4 font-serif-heading">
+          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-3 sm:mb-4 font-serif-heading">
             Specialized <span className="text-gradient-vos">Skills &amp; Technologies</span>
           </h2>
-          <p className="text-[#999999] text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-[#999999] text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
             Frontend &amp; Core Web, Backend Security, CMS, Testing, Accessibility, and AI-Assisted Workflows.
           </p>
         </div>
 
-        {/* Interactive Category Switcher Bar */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-2 rounded-2xl bg-[#12141A]/90 border border-white/10 backdrop-blur-xl shadow-2xl">
+        {/* Interactive Category Switcher Bar (Smooth Touch-Scrollable on mobile, Centered Pill on sm+) */}
+        <div className="flex sm:justify-center mb-8 sm:mb-10 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="inline-flex sm:flex-wrap items-center justify-start sm:justify-center gap-1.5 p-1.5 sm:p-2 rounded-2xl bg-[#12141A]/90 border border-white/10 backdrop-blur-xl shadow-2xl shrink-0">
             {categories.map((cat) => {
               const Icon = getCategoryIcon(cat.name);
               const isSelected = currentCategory?.id === cat.id;
@@ -136,7 +136,7 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-200 cursor-pointer ${
+                  className={`relative flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-200 cursor-pointer whitespace-nowrap shrink-0 ${
                     isSelected
                       ? "text-[#0B0C0E]"
                       : "text-[#CAD5E2] hover:text-white hover:bg-white/[0.04]"
@@ -150,13 +150,13 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
                     />
                   )}
                   <Icon
-                    className={`w-4 h-4 relative z-10 ${
+                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 relative z-10 ${
                       isSelected ? "text-[#0B0C0E]" : "text-[#F1BF00]"
                     }`}
                   />
                   <span className="relative z-10">{cat.name}</span>
                   <span
-                    className={`relative z-10 text-[10px] font-mono px-1.5 py-0.5 rounded-md ${
+                    className={`relative z-10 text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded-md ${
                       isSelected
                         ? "bg-[#0B0C0E]/15 text-[#0B0C0E] font-bold"
                         : "bg-white/5 text-[#999999]"
@@ -172,30 +172,30 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
 
         {/* Active Category Summary Strip */}
         {currentCategory && (
-          <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-4 mb-6 rounded-2xl bg-gradient-to-r from-[#14161D] via-[#111318] to-[#14161D] border border-white/10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 py-3.5 sm:py-4 mb-6 rounded-2xl bg-gradient-to-r from-[#14161D] via-[#111318] to-[#14161D] border border-white/10">
             <div className="flex items-center gap-3">
               {(() => {
                 const ActiveIcon = getCategoryIcon(currentCategory.name);
                 return (
-                  <div className="w-10 h-10 rounded-xl bg-[#F1BF00]/15 border border-[#F1BF00]/30 flex items-center justify-center text-[#F1BF00]">
-                    <ActiveIcon className="w-5 h-5" />
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F1BF00]/15 border border-[#F1BF00]/30 flex items-center justify-center text-[#F1BF00] shrink-0">
+                    <ActiveIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                 );
               })()}
               <div>
-                <h3 className="text-base sm:text-lg font-bold text-white font-serif-heading">
+                <h3 className="text-sm sm:text-lg font-bold text-white font-serif-heading">
                   {currentCategory.name}
                 </h3>
-                <p className="text-xs text-[#999999] font-mono">
+                <p className="text-[11px] sm:text-xs text-[#999999] font-mono">
                   {currentCategory.skills.length} Production-Ready Technologies
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="px-3.5 py-1.5 rounded-xl bg-[#0B0C0E]/80 border border-[#F1BF00]/25 flex items-center gap-2">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+              <div className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-xl bg-[#0B0C0E]/80 border border-[#F1BF00]/25 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#F1BF00] animate-pulse" />
-                <span className="text-xs font-mono text-[#CAD5E2]">
+                <span className="text-[11px] sm:text-xs font-mono text-[#CAD5E2]">
                   Avg Proficiency:{" "}
                   <strong className="text-[#F1BF00]">{avgProficiency}%</strong>
                 </span>
@@ -213,7 +213,7 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
             >
               {currentCategory.skills.map((skill, idx) => {
                 const { icon: SkillIcon, badge } = getSkillVisual(skill.name);
@@ -230,7 +230,7 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25, delay: idx * 0.03 }}
-                    className="group relative rounded-2xl p-5 bg-gradient-to-b from-[#15171D] to-[#0D0F14] border border-white/10 hover:border-[#F1BF00]/45 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#F1BF00]/10 overflow-hidden flex flex-col justify-between"
+                    className="group relative rounded-2xl p-4 sm:p-5 bg-gradient-to-b from-[#15171D] to-[#0D0F14] border border-white/10 hover:border-[#F1BF00]/45 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#F1BF00]/10 overflow-hidden flex flex-col justify-between"
                   >
                     {/* Subtle Top Accent Border on Hover */}
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#F1BF00]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

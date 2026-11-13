@@ -78,21 +78,21 @@ export default function Footer({ copyright, socialLinks: dbSocialLinks }: Footer
     : defaultSocialLinks;
 
   return (
-    <footer className="border-t border-white/5 bg-[#08090B] py-14 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="border-t border-white/5 bg-[#08090B] py-10 sm:py-14 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 text-center md:text-left">
         <div className="flex flex-col items-center md:items-start gap-1">
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-bold text-lg text-white group-hover:text-[#F1BF00] transition-colors font-serif-heading">
+            <span className="font-bold text-base sm:text-lg text-white group-hover:text-[#F1BF00] transition-colors font-serif-heading">
               Muhammad Jahanzaib<span className="text-[#F1BF00]">.</span>
             </span>
           </Link>
-          <p className="text-xs text-[#999999] font-mono">
+          <p className="text-[11px] sm:text-xs text-[#999999] font-mono">
             {copyright}
           </p>
         </div>
 
         {/* Social Icons & Back to Top */}
-        <div className="flex items-center gap-2.5 flex-wrap">
+        <div className="flex items-center justify-center gap-2 sm:gap-2.5 flex-wrap">
           {resolvedLinks.map((s, idx) => {
             const Icon = s.icon;
             return (
@@ -101,7 +101,7 @@ export default function Footer({ copyright, socialLinks: dbSocialLinks }: Footer
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-9 h-9 rounded-xl flex items-center justify-center bg-white/[0.03] border border-white/10 text-white/70 transition-all duration-200 hover:scale-105 ${s.hoverClass}`}
+                className={`w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center bg-white/[0.03] border border-white/10 text-white/70 transition-all duration-200 hover:scale-105 ${s.hoverClass}`}
                 title={s.name}
                 aria-label={s.name}
               >
@@ -117,7 +117,7 @@ export default function Footer({ copyright, socialLinks: dbSocialLinks }: Footer
               window.scrollTo({ top: 0, behavior: "smooth" });
               window.history.pushState(null, "", "/");
             }}
-            className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] hover:bg-[#F1BF00] hover:text-[#0B0C0E] transition-all ml-2 cursor-pointer"
+            className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] hover:bg-[#F1BF00] hover:text-[#0B0C0E] transition-all ml-1 sm:ml-2 cursor-pointer"
             title="Scroll to Top"
             aria-label="Scroll to Top"
           >

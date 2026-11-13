@@ -18,32 +18,32 @@ export default function CertificationsEducationSection({
       {/* =========================================================================
           SECTION 1: LICENSES & CERTIFICATIONS
          ========================================================================= */}
-      <AnimatedSection id="certifications" className="pt-28 pb-20 relative bg-[#0B0C0E] overflow-hidden">
+      <AnimatedSection id="certifications" className="pt-16 sm:pt-28 pb-12 sm:pb-20 relative bg-[#0B0C0E] overflow-hidden">
         {/* Ambient Backlight Orbs */}
         <div className="glow-orb-gold -left-24 top-1/4 opacity-20" />
         <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Verified Credentials</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-4 font-serif-heading">
+            <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-3 sm:mb-4 font-serif-heading">
               Licenses &amp; <span className="text-gradient-vos">Certifications</span>
             </h2>
-            <p className="text-[#999999] text-sm sm:text-base max-w-2xl mx-auto">
+            <p className="text-[#999999] text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
               Professional specializations and technical accreditations issued by industry leaders including Meta &amp; Coursera.
             </p>
           </div>
 
           {/* Certifications Grid (2 Columns on MD+, spacious luxury cards) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             {certifications.map((cert) => (
               <div
                 key={cert.id}
-                className="group relative rounded-2xl p-6 bg-gradient-to-b from-[#15171D] via-[#111318] to-[#0D0F14] border border-white/10 hover:border-[#F1BF00]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#F1BF00]/10 overflow-hidden flex flex-col justify-between"
+                className="group relative rounded-2xl p-4 sm:p-6 bg-gradient-to-b from-[#15171D] via-[#111318] to-[#0D0F14] border border-white/10 hover:border-[#F1BF00]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#F1BF00]/10 overflow-hidden flex flex-col justify-between"
               >
                 {/* Top Ambient Glow Line */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#F1BF00]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -52,11 +52,11 @@ export default function CertificationsEducationSection({
                   {/* Top Bar: Icon + Issuer Badge + Verify Link */}
                   <div className="flex items-start justify-between gap-3 mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-[#0B0C0E] border border-white/10 group-hover:border-[#F1BF00]/40 flex items-center justify-center text-[#F1BF00] shadow-inner transition-colors">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#0B0C0E] border border-white/10 group-hover:border-[#F1BF00]/40 flex items-center justify-center text-[#F1BF00] shadow-inner transition-colors shrink-0">
                         <Award className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-xs font-mono font-semibold text-[#F1BF00] bg-[#F1BF00]/10 px-2.5 py-0.5 rounded-full border border-[#F1BF00]/25">
+                        <span className="text-[11px] sm:text-xs font-mono font-semibold text-[#F1BF00] bg-[#F1BF00]/10 px-2.5 py-0.5 rounded-full border border-[#F1BF00]/25">
                           {cert.issuer}
                         </span>
                       </div>
@@ -67,7 +67,7 @@ export default function CertificationsEducationSection({
                         href={cert.verifyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 rounded-xl bg-white/[0.03] hover:bg-[#F1BF00] text-[#999999] hover:text-[#0B0C0E] border border-white/5 hover:border-[#F1BF00] transition-all shrink-0 hover:scale-105"
+                        className="p-2 sm:p-2.5 rounded-xl bg-white/[0.03] hover:bg-[#F1BF00] text-[#999999] hover:text-[#0B0C0E] border border-white/5 hover:border-[#F1BF00] transition-all shrink-0 hover:scale-105"
                         title="Verify Certificate"
                         aria-label={`Verify ${cert.title}`}
                       >
@@ -77,7 +77,7 @@ export default function CertificationsEducationSection({
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-white font-bold text-base sm:text-lg mb-2 group-hover:text-[#FFF8DC] transition-colors font-serif-heading leading-snug">
+                  <h3 className="text-white font-bold text-sm sm:text-lg mb-2 group-hover:text-[#FFF8DC] transition-colors font-serif-heading leading-snug">
                     {cert.title}
                   </h3>
 
@@ -114,32 +114,32 @@ export default function CertificationsEducationSection({
       {/* =========================================================================
           SECTION 2: FORMAL EDUCATION
          ========================================================================= */}
-      <AnimatedSection id="education" className="pt-20 pb-28 relative bg-[#090A0C] overflow-hidden border-t border-white/5">
+      <AnimatedSection id="education" className="pt-14 sm:pt-20 pb-16 sm:pb-28 relative bg-[#090A0C] overflow-hidden border-t border-white/5">
         {/* Ambient Backlight Orbs */}
         <div className="glow-orb-crimson -right-24 top-1/3 opacity-20" />
         <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#AA151B]/20 border border-[#AA151B]/40 text-[#FFF8DC] text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#AA151B]/20 border border-[#AA151B]/40 text-[#FFF8DC] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
               <GraduationCap className="w-3.5 h-3.5 text-[#F1BF00]" />
               <span>Academic Background</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-4 font-serif-heading">
+            <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-3 sm:mb-4 font-serif-heading">
               Formal <span className="text-gradient-vos">Education</span>
             </h2>
-            <p className="text-[#999999] text-sm sm:text-base max-w-2xl mx-auto">
+            <p className="text-[#999999] text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
               University degree in Software Engineering and academic foundations in science and technology.
             </p>
           </div>
 
           {/* Education Timeline / Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {education.map((edu, idx) => (
               <div
                 key={edu.id}
-                className="group relative rounded-2xl p-6 bg-gradient-to-b from-[#15171D] via-[#111318] to-[#0D0F14] border border-white/10 hover:border-[#AA151B]/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#AA151B]/15 flex flex-col justify-between overflow-hidden"
+                className="group relative rounded-2xl p-4 sm:p-6 bg-gradient-to-b from-[#15171D] via-[#111318] to-[#0D0F14] border border-white/10 hover:border-[#AA151B]/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#AA151B]/15 flex flex-col justify-between overflow-hidden"
               >
                 {/* Top Accent Line */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#AA151B] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -147,7 +147,7 @@ export default function CertificationsEducationSection({
                 <div>
                   {/* Top Bar: Icon + Step Index */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 rounded-xl bg-[#0B0C0E] border border-white/10 group-hover:border-[#AA151B]/40 flex items-center justify-center text-[#F1BF00] shadow-inner transition-colors">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#0B0C0E] border border-white/10 group-hover:border-[#AA151B]/40 flex items-center justify-center text-[#F1BF00] shadow-inner transition-colors shrink-0">
                       <GraduationCap className="w-5 h-5" />
                     </div>
                     <span className="text-xs font-mono font-bold text-[#CAD5E2] bg-white/5 px-2.5 py-1 rounded-lg border border-white/5">
@@ -156,12 +156,12 @@ export default function CertificationsEducationSection({
                   </div>
 
                   {/* Degree */}
-                  <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 group-hover:text-[#FFF8DC] transition-colors font-serif-heading leading-snug">
+                  <h3 className="text-white font-bold text-sm sm:text-lg mb-1.5 group-hover:text-[#FFF8DC] transition-colors font-serif-heading leading-snug">
                     {edu.degree}
                   </h3>
 
                   {/* Institution */}
-                  <p className="text-[#F1BF00] font-semibold text-sm mb-4">
+                  <p className="text-[#F1BF00] font-semibold text-xs sm:text-sm mb-4">
                     {edu.institution}
                   </p>
                 </div>
