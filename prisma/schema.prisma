@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Profile {
+  id            String       @id @default("default-profile")
+  name          String
+  title         String
+  subtitle      String
+  bio           String
+  email         String
+  phone         String
+  location      String
+  heroGreeting  String       @default("Hi, I'm")
+  heroBadge     String       @default("Available for Full-Time Roles & High-Impact Contracts")
+  primaryCTA    String       @default("Explore Projects")
+  secondaryCTA  String       @default("View Full Resume")
+  resumeUrl     String       @default("/assets/Jahanzaib-Resume.pdf")
+  avatarUrl     String?
+  heroCounters  String       // JSON string: array of { label, value }
+  socialLinks   SocialLink[]
+  updatedAt     DateTime     @updatedAt
+}
+
+model SocialLink {
+  id        String   @id @default(cuid())
+  platform  String
+  url       String
+  icon      String
+  order     Int      @default(0)
+  profileId String
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  tagline     String
+  description String
+  techStack   String   // JSON string: array of string tags
+  type        String
+  highlights  String   // JSON string: array of highlight strings
+  liveUrl     String?
+  githubUrl   String?
+  imageUrl    String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SkillCategory {
+  id        String   @id @default(cuid())
+  name      String
+  icon      String?
+  order     Int      @default(0)
+  skills    Skill[]
+}
+
+model Skill {
+  id          String        @id @default(cuid())
+  name        String
+  proficiency Int           @default(90)
+  order       Int           @default(0)
+  categoryId  String
+  category    SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model Experience {
+  id           String   @id @default(cuid())
+  role         String
+  company      String
+  timeline     String
+  location     String
+  focus        String
+  achievements String   // JSON string: array of bullet points
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Certification {
+  id        String   @id @default(cuid())
+  title     String
+  issuer    String
+  details   String
+  verifyUrl String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Education {
+  id          String   @id @default(cuid())
+  degree      String
+  institution String
+  location    String
+  duration    String
+  order       Int      @default(0)
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id              String   @id @default("default-settings")
+  siteTitle       String   @default("Muhammad Jahanzaib | Frontend Engineer & Next.js Developer")
+  metaDescription String   @default("Frontend Engineer specializing in Next.js, React, TypeScript and zero-defect web interfaces.")
+  ogTitle         String   @default("Muhammad Jahanzaib — Frontend Engineer")
+  ogDescription   String   @default("Building accessible, high-performance web systems with zero layout shift.")
+  ogImage         String?
+  favicon         String?
+  copyright       String   @default("© 2026 Muhammad Jahanzaib. All rights reserved.")
+  updatedAt       DateTime @updatedAt
+}
+
