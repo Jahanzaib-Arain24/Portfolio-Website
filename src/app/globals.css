@@ -72,16 +72,24 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   background-color: #F1BF00;
   color: #0B0C0E;
   font-family: var(--font-inter);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   border-radius: 9999px;
-  padding: 13px 26px;
+  padding: 10px 20px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px 0 rgba(241, 191, 0, 0.25);
+}
+
+@media (min-width: 640px) {
+  .btn-royal-gold {
+    gap: 10px;
+    font-size: 14px;
+    padding: 13px 26px;
+  }
 }
 
 .btn-royal-gold:hover {
@@ -95,16 +103,24 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   background-color: rgba(170, 21, 27, 0.15);
   border: 1px solid rgba(170, 21, 27, 0.4);
   color: #FFFFFF;
   font-family: var(--font-inter);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   border-radius: 9999px;
-  padding: 13px 24px;
+  padding: 10px 20px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+  .btn-royal-crimson {
+    gap: 10px;
+    font-size: 14px;
+    padding: 13px 24px;
+  }
 }
 
 .btn-royal-crimson:hover {

@@ -248,7 +248,7 @@ export default function Navbar({ resumeUrl = "/assets/Jahanzaib-Resume.pdf" }: N
                     e.preventDefault();
                     navigateToSection("contact");
                   }}
-                  className="w-full btn-royal-gold text-sm font-bold flex items-center justify-center gap-2 py-3 cursor-pointer"
+                  className="w-full btn-royal-gold text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 py-2.5 sm:py-3 cursor-pointer"
                 >
                   <span>Let&apos;s Talk</span>
                   <ArrowUpRight className="w-4 h-4" />

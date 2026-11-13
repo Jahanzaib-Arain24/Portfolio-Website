@@ -162,8 +162,8 @@ export default function HeroSection({
               {subtitle || "I architect scalable, high-performance web systems and bespoke digital products. By combining modern React & Next.js engineering with rigorous quality discipline, I build lightning-fast web applications engineered for seamless user experience and maximum business growth."}
             </p>
 
-            {/* Action Buttons: Royal Gold + Crimson Glass Pill (Full width stacked on mobile, inline on sm+) */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-10 w-full sm:w-auto">
+            {/* Action Buttons: Royal Gold + Crimson Glass Pill (Compact sleek sizing on mobile, full desktop sizing on sm+) */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
               <a
                 href="/projects"
                 onClick={(e) => {
@@ -175,19 +175,19 @@ export default function HeroSection({
                     window.history.pushState(null, "", "/projects");
                   }
                 }}
-                className="btn-royal-gold cursor-pointer justify-center"
+                className="btn-royal-gold cursor-pointer justify-center py-2.5 sm:py-3.5 px-5 sm:px-7 text-xs sm:text-sm font-bold"
               >
                 <span>{primaryCTA || "Explore Projects"}</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
               </a>
 
               <a
                 href={actualResumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-royal-crimson justify-center"
+                className="btn-royal-crimson justify-center py-2.5 sm:py-3.5 px-5 sm:px-6 text-xs sm:text-sm font-semibold"
               >
-                <Download className="w-4 h-4 text-[#F1BF00]" />
+                <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F1BF00]" />
                 <span>{secondaryCTA || "Download Resume"}</span>
               </a>
             </div>

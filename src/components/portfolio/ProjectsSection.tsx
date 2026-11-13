@@ -256,14 +256,14 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
               </div>
 
-              {/* Dedicated Sticky Action Footer */}
-              <div className="px-4 sm:px-8 py-3.5 bg-[#15171C]/95 backdrop-blur-xl border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 shrink-0">
+              {/* Dedicated Sticky Action Footer (Compact mobile sizing) */}
+              <div className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-[#15171C]/95 backdrop-blur-xl border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 shrink-0">
                 {selectedProject.liveUrl && (
                   <a
                     href={selectedProject.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-royal-gold text-xs justify-center py-3"
+                    className="btn-royal-gold text-xs justify-center py-2.5 sm:py-3 px-4 sm:px-6"
                   >
                     <span>Launch Live System</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -274,7 +274,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-royal-crimson text-xs justify-center py-3"
+                    className="btn-royal-crimson text-xs justify-center py-2.5 sm:py-3 px-4 sm:px-6"
                   >
                     <GithubIcon className="w-3.5 h-3.5" />
                     <span>View Repository</span>

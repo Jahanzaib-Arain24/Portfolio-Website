@@ -163,12 +163,12 @@ export default function AboutSection({
                   </div>
                 </div>
 
-                {/* Download Complete CV Button */}
+                {/* Download Complete CV Button (Compact on mobile) */}
                 <a
                   href={actualResumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-royal-gold mt-3 w-full text-xs font-semibold flex items-center justify-center gap-2 py-3.5 shadow-lg"
+                  className="btn-royal-gold mt-3 w-full text-xs font-semibold flex items-center justify-center gap-2 py-2.5 sm:py-3.5 shadow-lg"
                 >
                   <Download className="w-4 h-4 stroke-[2.5]" />
                   <span>Download Complete Resume</span>
