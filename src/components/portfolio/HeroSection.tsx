@@ -1,9 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Sparkles, Zap, Rocket, ShieldCheck } from "lucide-react";
+import { ArrowRight, Download, Zap, Rocket, ShieldCheck } from "lucide-react";
 import { GithubIcon, LinkedinIcon, FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import TypingRoles from "./TypingRoles";
+
+interface SocialLinkData {
+  platform: string;
+  url: string;
+}
 
 interface HeroSectionProps {
   name: string;
@@ -18,6 +23,7 @@ interface HeroSectionProps {
   typingRoles?: string | null;
   phone?: string;
   location?: string;
+  socialLinks?: SocialLinkData[];
 }
 
 export default function HeroSection({
@@ -31,6 +37,7 @@ export default function HeroSection({
   counters,
   typingRoles,
   location,
+  socialLinks: dbSocialLinks,
 }: HeroSectionProps) {
   const actualResumeUrl = resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf";
 
@@ -42,7 +49,7 @@ export default function HeroSection({
         "Full Stack Web Developer",
       ];
 
-  const socialLinks = [
+  const defaultSocialLinks = [
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/jahanzaib-arain/",
@@ -74,6 +81,36 @@ export default function HeroSection({
       hoverColor: "hover:text-[#25D366] hover:border-[#25D366]/40",
     },
   ];
+
+  // Resolve links from DB if provided, else use default
+  const resolvedSocialLinks = dbSocialLinks && dbSocialLinks.length > 0
+    ? dbSocialLinks.map((item) => {
+        const plat = item.platform.toLowerCase();
+        let Icon = LinkedinIcon;
+        let hoverColor = "hover:text-[#F1BF00] hover:border-[#F1BF00]/40";
+
+        if (plat.includes("github")) {
+          Icon = GithubIcon;
+          hoverColor = "hover:text-[#F1BF00] hover:border-[#F1BF00]/40";
+        } else if (plat.includes("facebook")) {
+          Icon = FacebookIcon;
+          hoverColor = "hover:text-[#1877F2] hover:border-[#1877F2]/40";
+        } else if (plat.includes("instagram")) {
+          Icon = InstagramIcon;
+          hoverColor = "hover:text-[#E4405F] hover:border-[#E4405F]/40";
+        } else if (plat.includes("whatsapp")) {
+          Icon = WhatsAppIcon;
+          hoverColor = "hover:text-[#25D366] hover:border-[#25D366]/40";
+        }
+
+        return {
+          name: item.platform,
+          href: item.url,
+          icon: Icon,
+          hoverColor,
+        };
+      })
+    : defaultSocialLinks;
 
   return (
     <section id="home" className="relative min-h-[94vh] pt-36 pb-24 flex flex-col justify-center overflow-hidden bg-[#0B0C0E]">
@@ -152,7 +189,7 @@ export default function HeroSection({
                 <span className="text-xs font-mono text-[#999999] uppercase tracking-wider mr-1 hidden sm:inline">
                   Connect:
                 </span>
-                {socialLinks.map((s, idx) => {
+                {resolvedSocialLinks.map((s, idx) => {
                   const Icon = s.icon;
                   return (
                     <a
@@ -272,7 +309,7 @@ export default function HeroSection({
                 <div className="w-10 h-10 rounded-xl bg-[#F1BF00]/15 border border-[#F1BF00]/30 flex items-center justify-center text-[#F1BF00] group-hover:scale-110 group-hover:bg-[#F1BF00] group-hover:text-[#0B0C0E] transition-all">
                   {idx === 0 && <Rocket className="w-5 h-5" />}
                   {idx === 1 && <ShieldCheck className="w-5 h-5" />}
-                  {idx === 2 && <Sparkles className="w-5 h-5" />}
+                  {idx === 2 && <ShieldCheck className="w-5 h-5" />}
                   {idx === 3 && <Zap className="w-5 h-5" />}
                 </div>
               </div>

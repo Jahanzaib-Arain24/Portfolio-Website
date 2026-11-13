@@ -6,7 +6,7 @@ export async function GET() {
   try {
     const profile = await prisma.profile.findUnique({
       where: { id: "default-profile" },
-      include: { socialLinks: true },
+      include: { socialLinks: { orderBy: { order: "asc" } } },
     });
     return NextResponse.json({ profile });
   } catch (error) {
@@ -36,6 +36,7 @@ export async function PUT(req: Request) {
       primaryCTA,
       secondaryCTA,
       resumeUrl,
+      avatarUrl,
       heroCounters,
       typingRoles,
       aboutHeading,
@@ -43,6 +44,7 @@ export async function PUT(req: Request) {
       storyTitle,
       storySubtitle,
       pillars,
+      socialLinks,
     } = body;
 
     const updatedProfile = await prisma.profile.upsert({
@@ -60,6 +62,7 @@ export async function PUT(req: Request) {
         primaryCTA,
         secondaryCTA,
         resumeUrl,
+        avatarUrl: avatarUrl || "/assets/about-me.png",
         heroCounters: typeof heroCounters === "string" ? heroCounters : JSON.stringify(heroCounters || []),
         typingRoles,
         aboutHeading,
@@ -82,6 +85,7 @@ export async function PUT(req: Request) {
         primaryCTA,
         secondaryCTA,
         resumeUrl,
+        avatarUrl: avatarUrl || "/assets/about-me.png",
         heroCounters: typeof heroCounters === "string" ? heroCounters : JSON.stringify(heroCounters || []),
         typingRoles,
         aboutHeading,
@@ -91,6 +95,37 @@ export async function PUT(req: Request) {
         pillars: typeof pillars === "string" ? pillars : JSON.stringify(pillars || []),
       },
     });
+
+    // Update social links if provided
+    if (Array.isArray(socialLinks)) {
+      for (const link of socialLinks) {
+        if (link.platform && link.url) {
+          const existing = await prisma.socialLink.findFirst({
+            where: {
+              profileId: "default-profile",
+              platform: link.platform,
+            },
+          });
+
+          if (existing) {
+            await prisma.socialLink.update({
+              where: { id: existing.id },
+              data: { url: link.url },
+            });
+          } else {
+            await prisma.socialLink.create({
+              data: {
+                profileId: "default-profile",
+                platform: link.platform,
+                url: link.url,
+                icon: link.icon || link.platform,
+                order: link.order || 0,
+              },
+            });
+          }
+        }
+      }
+    }
 
     return NextResponse.json({ success: true, profile: updatedProfile });
   } catch (error) {

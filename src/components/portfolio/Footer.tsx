@@ -2,12 +2,18 @@ import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { GithubIcon, LinkedinIcon, FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 
-interface FooterProps {
-  copyright: string;
+interface SocialLinkData {
+  platform: string;
+  url: string;
 }
 
-export default function Footer({ copyright }: FooterProps) {
-  const socialLinks = [
+interface FooterProps {
+  copyright: string;
+  socialLinks?: SocialLinkData[];
+}
+
+export default function Footer({ copyright, socialLinks: dbSocialLinks }: FooterProps) {
+  const defaultSocialLinks = [
     {
       name: "GitHub",
       href: "https://github.com/Jahanzaib-Arain24",
@@ -40,6 +46,35 @@ export default function Footer({ copyright }: FooterProps) {
     },
   ];
 
+  const resolvedLinks = dbSocialLinks && dbSocialLinks.length > 0
+    ? dbSocialLinks.map((item) => {
+        const plat = item.platform.toLowerCase();
+        let Icon = LinkedinIcon;
+        let hoverClass = "hover:text-[#F1BF00] hover:bg-[#F1BF00]/15";
+
+        if (plat.includes("github")) {
+          Icon = GithubIcon;
+          hoverClass = "hover:text-[#F1BF00] hover:bg-[#F1BF00]/15";
+        } else if (plat.includes("facebook")) {
+          Icon = FacebookIcon;
+          hoverClass = "hover:text-[#1877F2] hover:bg-[#1877F2]/15";
+        } else if (plat.includes("instagram")) {
+          Icon = InstagramIcon;
+          hoverClass = "hover:text-[#E4405F] hover:bg-[#E4405F]/15";
+        } else if (plat.includes("whatsapp")) {
+          Icon = WhatsAppIcon;
+          hoverClass = "hover:text-[#25D366] hover:bg-[#25D366]/15";
+        }
+
+        return {
+          name: item.platform,
+          href: item.url,
+          icon: Icon,
+          hoverClass,
+        };
+      })
+    : defaultSocialLinks;
+
   return (
     <footer className="border-t border-white/5 bg-[#08090B] py-14 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -56,7 +91,7 @@ export default function Footer({ copyright }: FooterProps) {
 
         {/* Social Icons & Back to Top */}
         <div className="flex items-center gap-2.5 flex-wrap">
-          {socialLinks.map((s, idx) => {
+          {resolvedLinks.map((s, idx) => {
             const Icon = s.icon;
             return (
               <a
@@ -64,19 +99,22 @@ export default function Footer({ copyright }: FooterProps) {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2.5 rounded-xl bg-white/5 text-[#999999] border border-white/5 transition-all hover:scale-105 ${s.hoverClass}`}
+                className={`w-9 h-9 rounded-xl flex items-center justify-center bg-white/[0.03] border border-white/10 text-white/70 transition-all duration-200 hover:scale-105 ${s.hoverClass}`}
                 title={s.name}
+                aria-label={s.name}
               >
                 <Icon className="w-4 h-4" />
               </a>
             );
           })}
+
           <a
-            href="#"
-            className="p-2.5 rounded-xl bg-[#F1BF00]/15 border border-[#F1BF00]/30 text-[#F1BF00] hover:bg-[#F1BF00] hover:text-[#0B0C0E] transition-all ml-2"
-            title="Back to Top"
+            href="#home"
+            className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#F1BF00]/10 border border-[#F1BF00]/30 text-[#F1BF00] hover:bg-[#F1BF00] hover:text-[#0B0C0E] transition-all ml-2"
+            title="Scroll to Top"
+            aria-label="Scroll to Top"
           >
-            <ArrowUp className="w-4 h-4 stroke-[2.5]" />
+            <ArrowUp className="w-4 h-4" />
           </a>
         </div>
       </div>

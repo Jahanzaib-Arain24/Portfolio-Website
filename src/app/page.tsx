@@ -79,6 +79,7 @@ export default async function PortfolioPage() {
           typingRoles={profile.typingRoles}
           phone={profile.phone}
           location={profile.location}
+          socialLinks={profile.socialLinks}
         />
       )}
 
@@ -118,7 +119,10 @@ export default async function PortfolioPage() {
         />
       )}
 
-      <Footer copyright={settings?.copyright || "© 2026 Muhammad Jahanzaib. All rights reserved."} />
+      <Footer 
+        copyright={settings?.copyright || "© 2026 Muhammad Jahanzaib. All rights reserved."} 
+        socialLinks={profile?.socialLinks} 
+      />
     </main>
   );
 }

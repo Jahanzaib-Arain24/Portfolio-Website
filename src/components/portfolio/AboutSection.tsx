@@ -101,7 +101,13 @@ export default function AboutSection({
             <span>Engineering Discipline &amp; Background</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight font-serif-heading">
-            {aboutHeading ? (
+            {aboutHeading && aboutHeading.includes("Code & Architecture") ? (
+              <>
+                {aboutHeading.split("Code & Architecture")[0]}
+                <span className="text-gradient-vos">Code &amp; Architecture</span>
+                {aboutHeading.split("Code & Architecture")[1]}
+              </>
+            ) : aboutHeading ? (
               <span>{aboutHeading}</span>
             ) : (
               <>

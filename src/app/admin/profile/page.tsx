@@ -9,10 +9,9 @@ import {
   Layers, 
   BarChart3, 
   Home, 
-  ShieldCheck, 
-  Terminal,
-  HelpCircle
+  Share2
 } from "lucide-react";
+import { GithubIcon, LinkedinIcon, FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import toast, { Toaster } from "react-hot-toast";
 import FileUploader from "@/components/admin/FileUploader";
 
@@ -22,7 +21,7 @@ interface PillarItem {
 }
 
 export default function ProfileAdminPage() {
-  const [activeTab, setActiveTab] = useState<"hero" | "about" | "metrics">("hero");
+  const [activeTab, setActiveTab] = useState<"hero" | "about" | "metrics" | "social">("hero");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -45,6 +44,14 @@ export default function ProfileAdminPage() {
     aboutSubtitle: "Architecting modern, scalable React & Next.js web applications with lightning-fast performance and clean code.",
     storyTitle: "Modern Frontend & Full Stack Architecture",
     storySubtitle: "Production-Grade Engineering • Clean Next.js & React Systems",
+  });
+
+  const [socials, setSocials] = useState({
+    linkedin: "https://www.linkedin.com/in/jahanzaib-arain/",
+    github: "https://github.com/Jahanzaib-Arain24",
+    facebook: "https://www.facebook.com/Jahanzaib.Arain24",
+    instagram: "https://www.instagram.com/jahanzaib.arain24/",
+    whatsapp: "https://wa.me/923123358542",
   });
 
   const [pillars, setPillars] = useState<PillarItem[]>([
@@ -116,6 +123,19 @@ export default function ProfileAdminPage() {
             setCounters(JSON.parse(p.heroCounters));
           } catch {}
         }
+
+        if (Array.isArray(p.socialLinks) && p.socialLinks.length > 0) {
+          const linksMap: Record<string, string> = {};
+          p.socialLinks.forEach((sl: { platform: string; url: string }) => {
+            const key = sl.platform.toLowerCase();
+            if (key.includes("linkedin")) linksMap.linkedin = sl.url;
+            if (key.includes("github")) linksMap.github = sl.url;
+            if (key.includes("facebook")) linksMap.facebook = sl.url;
+            if (key.includes("instagram")) linksMap.instagram = sl.url;
+            if (key.includes("whatsapp")) linksMap.whatsapp = sl.url;
+          });
+          setSocials((prev) => ({ ...prev, ...linksMap }));
+        }
       }
     } catch {
       toast.error("Failed to load profile data.");
@@ -133,6 +153,13 @@ export default function ProfileAdminPage() {
         ...form,
         pillars: JSON.stringify(pillars),
         heroCounters: JSON.stringify(counters),
+        socialLinks: [
+          { platform: "LinkedIn", url: socials.linkedin, icon: "Linkedin", order: 1 },
+          { platform: "GitHub", url: socials.github, icon: "Github", order: 2 },
+          { platform: "Facebook", url: socials.facebook, icon: "Facebook", order: 3 },
+          { platform: "Instagram", url: socials.instagram, icon: "Instagram", order: 4 },
+          { platform: "WhatsApp", url: socials.whatsapp, icon: "MessageCircle", order: 5 },
+        ],
       };
 
       const res = await fetch("/api/profile", {
@@ -142,7 +169,8 @@ export default function ProfileAdminPage() {
       });
 
       if (res.ok) {
-        toast.success("Home & About settings updated successfully!");
+        toast.success("Profile, Image & Social Links updated successfully!");
+        fetchProfile();
       } else {
         toast.error("Failed to save changes.");
       }
@@ -193,7 +221,7 @@ export default function ProfileAdminPage() {
             Hero &amp; Profile Control Center
           </h1>
           <p className="text-white/60 text-xs sm:text-sm mt-1 max-w-xl">
-            Live configuration for Home hero pitch, dynamic typing roles, About Me architecture narrative, and asset documents.
+            Live configuration for Home hero pitch, dynamic typing roles, About Me architecture narrative, portrait image, and social media channels.
           </p>
         </div>
 
@@ -246,6 +274,19 @@ export default function ProfileAdminPage() {
         >
           <BarChart3 className="w-3.5 h-3.5" />
           <span>📊 Metrics &amp; Assets</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab("social")}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            activeTab === "social"
+              ? "bg-[#F1BF00] text-[#0B0C0E] shadow-md shadow-[#F1BF00]/20"
+              : "text-white/60 hover:text-white hover:bg-white/5"
+          }`}
+        >
+          <Share2 className="w-3.5 h-3.5" />
+          <span>🔗 Social Profiles</span>
         </button>
       </div>
 
@@ -391,6 +432,9 @@ export default function ProfileAdminPage() {
                     placeholder="Behind the Code & Architecture"
                     className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs outline-none focus:border-[#F1BF00]/60 transition-colors"
                   />
+                  <p className="text-[11px] text-white/40 mt-1 font-mono">
+                    &quot;Code &amp; Architecture&quot; automatically displays in signature Royal Gold &amp; Crimson gradient.
+                  </p>
                 </div>
 
                 <div>
@@ -504,7 +548,7 @@ export default function ProfileAdminPage() {
           </div>
         )}
 
-        {/* TAB 3: METRICS, ASSETS & CONTACT */}
+        {/* TAB 3: METRICS & ASSETS */}
         {activeTab === "metrics" && (
           <div className="space-y-6">
             {/* Direct File & Asset Uploaders */}
@@ -519,19 +563,19 @@ export default function ProfileAdminPage() {
                   label="Portrait Photo (About Section & Portrait Frame)"
                   value={form.avatarUrl || "/assets/about-me.png"}
                   onChange={(url) => {
-                    setForm({ ...form, avatarUrl: url });
-                    toast.success("Portrait photo updated!");
+                    setForm((prev) => ({ ...prev, avatarUrl: url }));
+                    toast.success("Portrait photo selected! Click 'Save All Settings' to apply live.");
                   }}
                   accept="image/png,image/jpeg,image/webp"
-                  helperText="Recommended: 600x750 high resolution portrait (.png or .jpg)"
+                  helperText="Default: /assets/about-me.png. Choose any high-resolution portrait."
                 />
 
                 <FileUploader
                   label="Complete Resume / Curriculum Vitae (PDF)"
                   value={form.resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf"}
                   onChange={(url) => {
-                    setForm({ ...form, resumeUrl: url });
-                    toast.success("Resume PDF document updated!");
+                    setForm((prev) => ({ ...prev, resumeUrl: url }));
+                    toast.success("Resume PDF selected! Click 'Save All Settings' to apply live.");
                   }}
                   accept="application/pdf"
                   helperText="Official downloadable PDF for recruiters & clients"
@@ -630,6 +674,93 @@ export default function ProfileAdminPage() {
                     value={form.location}
                     onChange={(e) => setForm({ ...form, location: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs outline-none focus:border-[#F1BF00]/60"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 4: SOCIAL CHANNELS & PROFILES */}
+        {activeTab === "social" && (
+          <div className="space-y-6">
+            <div className="p-6 sm:p-8 rounded-3xl bg-[#101217] border border-white/10 shadow-xl space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-white/5">
+                <div className="flex items-center gap-2">
+                  <Share2 className="w-5 h-5 text-[#F1BF00]" />
+                  <h3 className="font-bold text-white text-base">Social Media &amp; Connectivity Links</h3>
+                </div>
+                <span className="text-xs font-mono text-[#F1BF00]">Synced Across Hero &amp; Footer</span>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="flex items-center gap-2 text-xs font-mono text-white/70 mb-1.5 uppercase">
+                    <LinkedinIcon className="w-4 h-4 text-[#F1BF00]" />
+                    <span>LinkedIn Profile URL</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={socials.linkedin}
+                    onChange={(e) => setSocials({ ...socials, linkedin: e.target.value })}
+                    placeholder="https://www.linkedin.com/in/..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs outline-none focus:border-[#F1BF00]/60 transition-colors font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-xs font-mono text-white/70 mb-1.5 uppercase">
+                    <GithubIcon className="w-4 h-4 text-[#F1BF00]" />
+                    <span>GitHub Profile URL</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={socials.github}
+                    onChange={(e) => setSocials({ ...socials, github: e.target.value })}
+                    placeholder="https://github.com/..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs outline-none focus:border-[#F1BF00]/60 transition-colors font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-xs font-mono text-white/70 mb-1.5 uppercase">
+                    <FacebookIcon className="w-4 h-4 text-[#1877F2]" />
+                    <span>Facebook Profile URL</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={socials.facebook}
+                    onChange={(e) => setSocials({ ...socials, facebook: e.target.value })}
+                    placeholder="https://www.facebook.com/..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs outline-none focus:border-[#F1BF00]/60 transition-colors font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-xs font-mono text-white/70 mb-1.5 uppercase">
+                    <InstagramIcon className="w-4 h-4 text-[#E4405F]" />
+                    <span>Instagram Profile URL</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={socials.instagram}
+                    onChange={(e) => setSocials({ ...socials, instagram: e.target.value })}
+                    placeholder="https://www.instagram.com/..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs outline-none focus:border-[#F1BF00]/60 transition-colors font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-xs font-mono text-white/70 mb-1.5 uppercase">
+                    <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                    <span>WhatsApp Direct Link / Phone</span>
+                  </label>
+                  <input
+                    type="url"
+                    value={socials.whatsapp}
+                    onChange={(e) => setSocials({ ...socials, whatsapp: e.target.value })}
+                    placeholder="https://wa.me/92312..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs outline-none focus:border-[#F1BF00]/60 transition-colors font-mono"
                   />
                 </div>
               </div>
