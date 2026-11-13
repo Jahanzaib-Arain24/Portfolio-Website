@@ -12,55 +12,78 @@ import {
   Layers
 } from "lucide-react";
 
+interface PillarItem {
+  title: string;
+  desc: string;
+}
+
 interface AboutSectionProps {
   bio: string;
   email: string;
   phone: string;
   location: string;
   resumeUrl: string;
+  name?: string;
+  aboutHeading?: string | null;
+  aboutSubtitle?: string | null;
+  storyTitle?: string | null;
+  storySubtitle?: string | null;
+  pillars?: string | null;
+  avatarUrl?: string | null;
 }
 
 export default function AboutSection({
   bio,
   resumeUrl,
+  name,
+  aboutHeading,
+  aboutSubtitle,
+  storyTitle,
+  storySubtitle,
+  pillars,
+  avatarUrl,
 }: AboutSectionProps) {
   const bioParagraphs = bio.split("\n\n");
   const actualResumeUrl = resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf";
+  const photoUrl = avatarUrl || "/assets/about-me.png";
 
-  const pillars = [
+  let parsedPillars: PillarItem[] = [];
+  try {
+    if (pillars) {
+      parsedPillars = JSON.parse(pillars);
+    }
+  } catch {
+    parsedPillars = [];
+  }
+
+  const defaultPillars: PillarItem[] = [
     {
       title: "Clean & Modular Architecture",
       desc: "Component-driven structure with strict TypeScript typing, reusable design systems, and maintainable state pipelines.",
-      icon: ShieldCheck,
-      borderColor: "hover:border-[#AA151B]/60",
-      iconColor: "text-[#AA151B]",
-      accentGlow: "group-hover:bg-[#AA151B]/10",
     },
     {
       title: "Sub-Second Core Vitals",
       desc: "Zero layout shifts (0 CLS) and sub-second First Contentful Paint engineered for max conversions.",
-      icon: Zap,
-      borderColor: "hover:border-[#F1BF00]/60",
-      iconColor: "text-[#F1BF00]",
-      accentGlow: "group-hover:bg-[#F1BF00]/10",
     },
     {
       title: "Meta Certified Specialist",
       desc: "Comprehensive 9-course professional specialization in responsive design, UI/UX, and state pipelines.",
-      icon: Award,
-      borderColor: "hover:border-[#FFF8DC]/60",
-      iconColor: "text-[#FFF8DC]",
-      accentGlow: "group-hover:bg-[#FFF8DC]/10",
     },
     {
       title: "Modern React & Next.js",
       desc: "Deep mastery of App Router, Server Components, TypeScript type-safety, and modular architecture.",
-      icon: Layers,
-      borderColor: "hover:border-[#F1BF00]/60",
-      iconColor: "text-[#F1BF00]",
-      accentGlow: "group-hover:bg-[#F1BF00]/10",
     },
   ];
+
+  const activePillars = parsedPillars.length > 0 ? parsedPillars : defaultPillars;
+  const pillarIcons = [ShieldCheck, Zap, Award, Layers];
+  const borderColors = [
+    "hover:border-[#AA151B]/60",
+    "hover:border-[#F1BF00]/60",
+    "hover:border-[#FFF8DC]/60",
+    "hover:border-[#F1BF00]/60",
+  ];
+  const iconColors = ["text-[#AA151B]", "text-[#F1BF00]", "text-[#FFF8DC]", "text-[#F1BF00]"];
 
   return (
     <AnimatedSection id="about" className="py-28 relative bg-[#0B0C0E] overflow-hidden">
@@ -78,10 +101,16 @@ export default function AboutSection({
             <span>Engineering Discipline &amp; Background</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight font-serif-heading">
-            Behind the <span className="text-gradient-vos">Code &amp; Architecture</span>
+            {aboutHeading ? (
+              <span>{aboutHeading}</span>
+            ) : (
+              <>
+                Behind the <span className="text-gradient-vos">Code &amp; Architecture</span>
+              </>
+            )}
           </h2>
           <p className="text-[#999999] text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-            Architecting modern, scalable React &amp; Next.js web applications with lightning-fast performance and clean code.
+            {aboutSubtitle || "Architecting modern, scalable React & Next.js web applications with lightning-fast performance and clean code."}
           </p>
         </div>
 
@@ -100,8 +129,8 @@ export default function AboutSection({
                 {/* Photo Container */}
                 <div className="relative w-full aspect-[4/4.9] rounded-2xl overflow-hidden bg-[#0B0C0E]">
                   <Image
-                    src="/assets/about-me.png"
-                    alt="Muhammad Jahanzaib - Frontend Engineer"
+                    src={photoUrl}
+                    alt={`${name || "Muhammad Jahanzaib"} - Frontend Engineer`}
                     fill
                     sizes="(max-width: 768px) 100vw, 450px"
                     className="object-cover object-top filter grayscale contrast-[1.08] brightness-[0.98] group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
@@ -120,7 +149,7 @@ export default function AboutSection({
                   {/* Bottom Portrait Caption */}
                   <div className="absolute bottom-4 left-4 right-4 z-10">
                     <h3 className="text-xl font-bold text-white font-serif-heading drop-shadow-lg">
-                      Muhammad Jahanzaib
+                      {name || "Muhammad Jahanzaib"}
                     </h3>
                     <p className="text-xs text-[#F1BF00] font-mono font-medium drop-shadow-md">
                       Frontend Engineer &amp; Full Stack Developer
@@ -142,7 +171,7 @@ export default function AboutSection({
             </div>
           </div>
 
-          {/* Right Column: Engineering Narrative, Quick Contact Chips & 4 Architectural Pillars */}
+          {/* Right Column: Engineering Narrative & 4 Architectural Pillars */}
           <div className="lg:col-span-7 space-y-6">
             
             {/* Story Card */}
@@ -154,45 +183,51 @@ export default function AboutSection({
                   </div>
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-white font-serif-heading">
-                      Modern Frontend &amp; Full Stack Architecture
+                      {storyTitle || "Modern Frontend & Full Stack Architecture"}
                     </h3>
                     <p className="text-[11px] font-mono text-[#999999]">
-                      Production-Grade Engineering &bull; Clean Next.js &amp; React Systems
+                      {storySubtitle || "Production-Grade Engineering • Clean Next.js & React Systems"}
                     </p>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#AA151B]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-[#F1BF00]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
                 </div>
               </div>
 
-              {bioParagraphs.map((para, idx) => (
-                <p key={idx} className="text-[#CAD5E2] text-sm sm:text-base leading-[26px]">
-                  {para}
-                </p>
-              ))}
+              {/* Bio Narrative */}
+              <div className="space-y-4 text-sm sm:text-[15px] leading-relaxed text-[#CAD5E2]">
+                {bioParagraphs.map((para, idx) => (
+                  <p key={idx} className="leading-[26px]">
+                    {para}
+                  </p>
+                ))}
+              </div>
             </div>
 
-            {/* 4 Architectural Pillars Grid */}
+            {/* 4 Architectural Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {pillars.map((pillar, idx) => {
-                const Icon = pillar.icon;
+              {activePillars.slice(0, 4).map((pillar, idx) => {
+                const IconComponent = pillarIcons[idx % pillarIcons.length];
+                const borderHover = borderColors[idx % borderColors.length];
+                const iconColor = iconColors[idx % iconColors.length];
+
                 return (
                   <div
                     key={idx}
-                    className={`group p-5 rounded-2xl bg-gradient-to-b from-[#15171D] to-[#0E1015] border border-white/10 ${pillar.borderColor} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
+                    className={`group p-5 rounded-2xl bg-[#12141A]/95 border border-white/10 ${borderHover} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
                   >
                     <div className="flex items-center gap-3 mb-2.5">
-                      <div className={`p-2.5 rounded-xl bg-white/[0.04] ${pillar.accentGlow} transition-colors border border-white/5`}>
-                        <Icon className={`w-5 h-5 ${pillar.iconColor}`} />
+                      <div className={`p-2 rounded-xl bg-white/[0.04] border border-white/10 ${iconColor} group-hover:scale-110 transition-transform`}>
+                        <IconComponent className="w-4 h-4" />
                       </div>
-                      <h4 className="font-bold text-white text-sm group-hover:text-[#FFF8DC] transition-colors font-serif-heading">
+                      <h4 className="text-sm font-bold text-white font-serif-heading">
                         {pillar.title}
                       </h4>
                     </div>
-                    <p className="text-[#999999] text-xs leading-relaxed">
+                    <p className="text-xs text-[#999999] leading-relaxed">
                       {pillar.desc}
                     </p>
                   </div>
@@ -203,6 +238,7 @@ export default function AboutSection({
           </div>
 
         </div>
+
       </div>
     </AnimatedSection>
   );

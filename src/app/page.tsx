@@ -76,16 +76,26 @@ export default async function PortfolioPage() {
           secondaryCTA={profile.secondaryCTA}
           resumeUrl={profile.resumeUrl}
           counters={counters}
+          typingRoles={profile.typingRoles}
+          phone={profile.phone}
+          location={profile.location}
         />
       )}
 
       {profile && (
         <AboutSection
+          name={profile.name}
           bio={profile.bio}
           email={profile.email}
           phone={profile.phone}
           location={profile.location}
           resumeUrl={profile.resumeUrl}
+          aboutHeading={profile.aboutHeading}
+          aboutSubtitle={profile.aboutSubtitle}
+          storyTitle={profile.storyTitle}
+          storySubtitle={profile.storySubtitle}
+          pillars={profile.pillars}
+          avatarUrl={profile.avatarUrl}
         />
       )}
 

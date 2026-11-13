@@ -21,18 +21,27 @@ model Profile {
   id            String       @id @default("default-profile")
   name          String
   title         String
-  subtitle      String
+  subtitle      String       @default("I architect scalable, high-performance web systems and bespoke digital products. By combining modern React & Next.js engineering with rigorous quality discipline, I build lightning-fast web applications engineered for seamless user experience and maximum business growth.")
   bio           String
   email         String
   phone         String
   location      String
-  heroGreeting  String       @default("Hi, I'm")
-  heroBadge     String       @default("Available for Full-Time Roles & High-Impact Contracts")
+  heroGreeting  String       @default("Hi There, I'm")
+  heroBadge     String       @default("🟢 Available for Full-Time Roles & High-Impact Contracts (Remote Worldwide)")
   primaryCTA    String       @default("Explore Projects")
-  secondaryCTA  String       @default("View Full Resume")
-  resumeUrl     String       @default("/assets/Jahanzaib-Resume.pdf")
+  secondaryCTA  String       @default("Download Resume")
+  resumeUrl     String       @default("/assets/Jahanzaib-Resume-Frontend-Engineer.pdf")
   avatarUrl     String?
   heroCounters  String       // JSON string: array of { label, value }
+
+  // Dynamic Hero & About Content
+  typingRoles   String?      @default("Frontend Engineer, React.js & Next.js Developer, Full Stack Web Developer")
+  aboutHeading  String?      @default("Behind the Code & Architecture")
+  aboutSubtitle String?      @default("Architecting modern, scalable React & Next.js web applications with lightning-fast performance and clean code.")
+  storyTitle    String?      @default("Modern Frontend & Full Stack Architecture")
+  storySubtitle String?      @default("Production-Grade Engineering • Clean Next.js & React Systems")
+  pillars       String?      // JSON string: array of 4 pillars [{ title, desc }]
+
   socialLinks   SocialLink[]
   updatedAt     DateTime     @updatedAt
 }
@@ -134,4 +143,3 @@ model SiteSettings {
   copyright       String   @default("© 2026 Muhammad Jahanzaib. All rights reserved.")
   updatedAt       DateTime @updatedAt
 }
-

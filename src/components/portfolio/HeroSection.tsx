@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Sparkles, Zap, Rocket, ShieldCheck, TrendingUp, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Download, Sparkles, Zap, Rocket, ShieldCheck } from "lucide-react";
 import { GithubIcon, LinkedinIcon, FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import TypingRoles from "./TypingRoles";
 
@@ -15,23 +15,32 @@ interface HeroSectionProps {
   secondaryCTA: string;
   resumeUrl: string;
   counters: Array<{ label: string; value: string }>;
+  typingRoles?: string | null;
+  phone?: string;
+  location?: string;
 }
 
 export default function HeroSection({
   name,
+  subtitle,
   greeting,
   badge,
   primaryCTA,
   secondaryCTA,
+  resumeUrl,
   counters,
+  typingRoles,
+  location,
 }: HeroSectionProps) {
-  const actualResumeUrl = "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf";
+  const actualResumeUrl = resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf";
 
-  const typingRolesList = [
-    "Frontend Engineer",
-    "React.js & Next.js Developer",
-    "Full Stack Web Developer",
-  ];
+  const typingRolesList = typingRoles
+    ? typingRoles.split(",").map((r) => r.trim()).filter(Boolean)
+    : [
+        "Frontend Engineer",
+        "React.js & Next.js Developer",
+        "Full Stack Web Developer",
+      ];
 
   const socialLinks = [
     {
@@ -97,9 +106,9 @@ export default function HeroSection({
               {greeting || "Hi There, I'm"}
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-[62px] font-bold text-white mb-4 leading-[1.12] font-serif-heading">
-              Muhammad{" "}
+              {name ? name.split(" ")[0] : "Muhammad"}{" "}
               <span className="text-gradient-vos block sm:inline">
-                Jahanzaib.
+                {name ? name.split(" ").slice(1).join(" ") : "Jahanzaib."}
               </span>
             </h1>
 
@@ -111,9 +120,9 @@ export default function HeroSection({
               </h2>
             </div>
 
-            {/* High-Converting Pitch */}
+            {/* High-Converting Pitch / Subtitle Description */}
             <p className="text-[#CAD5E2] text-sm sm:text-base leading-[26px] max-w-xl mb-8">
-              I architect scalable, high-performance web systems and bespoke digital products. By combining modern React & Next.js engineering with rigorous quality discipline, I build lightning-fast web applications engineered for seamless user experience and maximum business growth.
+              {subtitle || "I architect scalable, high-performance web systems and bespoke digital products. By combining modern React & Next.js engineering with rigorous quality discipline, I build lightning-fast web applications engineered for seamless user experience and maximum business growth."}
             </p>
 
             {/* Action Buttons: Royal Gold + Crimson Glass Pill */}
@@ -133,11 +142,11 @@ export default function HeroSection({
                 className="btn-royal-crimson"
               >
                 <Download className="w-4 h-4 text-[#F1BF00]" />
-                <span>Download Resume</span>
+                <span>{secondaryCTA || "Download Resume"}</span>
               </a>
             </div>
 
-            {/* Social Icons Bar: LinkedIn, GitHub, Facebook, Instagram, WhatsApp */}
+            {/* Social Icons Bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-white/10">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-mono text-[#999999] uppercase tracking-wider mr-1 hidden sm:inline">
@@ -185,11 +194,11 @@ export default function HeroSection({
             {/* Top-Left Floating Metric */}
             <div className="absolute -top-7 -left-2 sm:-top-8 sm:-left-5 z-20 flex items-center gap-3 py-2.5 px-4 rounded-2xl bg-[#15171C]/95 border border-[#F1BF00]/30 backdrop-blur-xl shadow-2xl">
               <div className="w-9 h-9 rounded-xl bg-[#F1BF00]/20 border border-[#F1BF00]/40 flex items-center justify-center font-bold text-sm text-[#F1BF00] font-mono">
-                785+
+                {counters?.[1]?.value || "785+"}
               </div>
               <div>
                 <p className="text-[10px] uppercase font-mono text-[#999999] tracking-wider">Automated Testing</p>
-                <p className="text-xs font-bold text-white">QA Tests Passed</p>
+                <p className="text-xs font-bold text-white">{counters?.[1]?.label || "QA Tests Passed"}</p>
               </div>
             </div>
 
@@ -197,7 +206,7 @@ export default function HeroSection({
             <div className="royal-card p-3 shadow-2xl">
               <div className="relative rounded-2xl bg-[#0B0C0E] border border-white/5 p-6 pt-12 sm:pt-14 pb-8 flex flex-col justify-between font-mono text-xs">
                 
-                {/* Code Window Header - Positioned cleanly below the top badge */}
+                {/* Code Window Header */}
                 <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-[#AA151B]" />
@@ -211,20 +220,20 @@ export default function HeroSection({
                 <div className="space-y-2 text-[#CAD5E2] leading-relaxed text-[12px] sm:text-[13px]">
                   <p className="text-[#999999]">// Frontend Engineer &amp; Full Stack Web Developer</p>
                   <p className="text-white"><span className="text-[#F1BF00]">export const</span> engineer = &#123;</p>
-                  <p className="pl-4 text-[#CAD5E2]">name: <span className="text-[#FFF8DC]">&apos;Muhammad Jahanzaib&apos;</span>,</p>
+                  <p className="pl-4 text-[#CAD5E2]">name: <span className="text-[#FFF8DC]">&apos;{name || "Muhammad Jahanzaib"}&apos;</span>,</p>
                   <p className="pl-4 text-[#CAD5E2]">roles: [<span className="text-[#F1BF00]">&apos;Frontend Engineer&apos;</span>, <span className="text-[#F1BF00]">&apos;React/Next.js&apos;</span>, <span className="text-[#F1BF00]">&apos;Full Stack&apos;</span>],</p>
                   <p className="pl-4 text-[#CAD5E2]">credentials: <span className="text-[#FFF8DC]">&apos;Meta Front-End Certified&apos;</span>,</p>
                   <p className="pl-4 text-[#CAD5E2]">stack: [<span className="text-[#FFF8DC]">&apos;Next.js 16&apos;</span>, <span className="text-[#FFF8DC]">&apos;React 19&apos;</span>, <span className="text-[#FFF8DC]">&apos;TypeScript&apos;</span>],</p>
                   <p className="pl-4 text-[#CAD5E2]">performance: <span className="text-[#F1BF00]">&apos;Sub-Second Ultra Fast&apos;</span>,</p>
-                  <p className="pl-4 text-[#CAD5E2]">location: <span className="text-[#CAD5E2]">&apos;Karachi, Pakistan (Remote)&apos;</span></p>
+                  <p className="pl-4 text-[#CAD5E2]">location: <span className="text-[#CAD5E2]">&apos;{location || "Karachi, Pakistan (Remote)"}&apos;</span></p>
                   <p className="text-white">&#125;;</p>
                 </div>
 
                 {/* Metrics Progress Box */}
                 <div className="p-4 rounded-xl bg-[#15171C] border border-[#F1BF00]/20 backdrop-blur-md mt-6">
                   <div className="flex items-center justify-between text-xs mb-1.5 font-sans">
-                    <span className="text-[#CAD5E2] font-semibold">Delivery Speed Acceleration</span>
-                    <span className="text-[#F1BF00] font-bold font-mono">+30% Velocity</span>
+                    <span className="text-[#CAD5E2] font-semibold">{counters?.[3]?.label || "Delivery Speed Acceleration"}</span>
+                    <span className="text-[#F1BF00] font-bold font-mono">+{counters?.[3]?.value || "30%"} Velocity</span>
                   </div>
                   <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
                     <div className="bg-gradient-to-r from-[#AA151B] to-[#F1BF00] h-full w-full rounded-full" />
@@ -243,88 +252,41 @@ export default function HeroSection({
 
         </div>
 
-        {/* 4 Hero Counters Bar Recreated */}
+        {/* 4 Hero Counters Bar */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-20"
         >
-          {/* Card 1: Production Systems */}
-          <div className="group relative rounded-2xl p-6 bg-gradient-to-b from-[#15171D] via-[#101216] to-[#0B0C0E] border border-white/10 hover:border-[#F1BF00]/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#F1BF00]/10 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#F1BF00] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FFF8DC] to-[#F1BF00] font-mono tracking-tight">
-                6+
-              </span>
-              <div className="w-10 h-10 rounded-xl bg-[#F1BF00]/15 border border-[#F1BF00]/30 flex items-center justify-center text-[#F1BF00] group-hover:scale-110 group-hover:bg-[#F1BF00] group-hover:text-[#0B0C0E] transition-all">
-                <Rocket className="w-5 h-5" />
+          {counters.map((c, idx) => (
+            <div
+              key={idx}
+              className="group relative rounded-2xl p-6 bg-gradient-to-b from-[#15171D] via-[#101216] to-[#0B0C0E] border border-white/10 hover:border-[#F1BF00]/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#F1BF00]/10 overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#F1BF00] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FFF8DC] to-[#F1BF00] font-mono tracking-tight">
+                  {c.value}
+                </span>
+                <div className="w-10 h-10 rounded-xl bg-[#F1BF00]/15 border border-[#F1BF00]/30 flex items-center justify-center text-[#F1BF00] group-hover:scale-110 group-hover:bg-[#F1BF00] group-hover:text-[#0B0C0E] transition-all">
+                  {idx === 0 && <Rocket className="w-5 h-5" />}
+                  {idx === 1 && <ShieldCheck className="w-5 h-5" />}
+                  {idx === 2 && <Sparkles className="w-5 h-5" />}
+                  {idx === 3 && <Zap className="w-5 h-5" />}
+                </div>
               </div>
+              <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#FFF8DC] transition-colors">
+                {c.label}
+              </h3>
+              <p className="text-xs text-[#999999] font-mono">
+                {idx === 0 && "Live enterprise & client platforms"}
+                {idx === 1 && "Unit, E2E & regression verification"}
+                {idx === 2 && "Accessible & zero layout shift"}
+                {idx === 3 && "Fast CI/CD & rapid release cycle"}
+              </p>
             </div>
-            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#FFF8DC] transition-colors">
-              Production Systems Shipped
-            </h3>
-            <p className="text-xs text-[#999999] font-mono">
-              Live enterprise &amp; client platforms
-            </p>
-          </div>
-
-          {/* Card 2: QA Tests Passed */}
-          <div className="group relative rounded-2xl p-6 bg-gradient-to-b from-[#15171D] via-[#101216] to-[#0B0C0E] border border-white/10 hover:border-[#AA151B]/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#AA151B]/15 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#AA151B] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FFF8DC] to-[#F1BF00] font-mono tracking-tight">
-                785+
-              </span>
-              <div className="w-10 h-10 rounded-xl bg-[#AA151B]/20 border border-[#AA151B]/40 flex items-center justify-center text-[#AA151B] group-hover:scale-110 group-hover:bg-[#AA151B] group-hover:text-white transition-all">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-            </div>
-            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#FFF8DC] transition-colors">
-              Automated QA Tests Passed
-            </h3>
-            <p className="text-xs text-[#999999] font-mono">
-              100% zero-defect verified code
-            </p>
-          </div>
-
-          {/* Card 3: WCAG 2.1 AA Compliant */}
-          <div className="group relative rounded-2xl p-6 bg-gradient-to-b from-[#15171D] via-[#101216] to-[#0B0C0E] border border-white/10 hover:border-[#F1BF00]/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#F1BF00]/10 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#F1BF00] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FFF8DC] to-[#F1BF00] font-mono tracking-tight">
-                100%
-              </span>
-              <div className="w-10 h-10 rounded-xl bg-[#F1BF00]/15 border border-[#F1BF00]/30 flex items-center justify-center text-[#F1BF00] group-hover:scale-110 group-hover:bg-[#F1BF00] group-hover:text-[#0B0C0E] transition-all">
-                <CheckCircle2 className="w-5 h-5" />
-              </div>
-            </div>
-            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#FFF8DC] transition-colors">
-              WCAG 2.1 AA Compliant
-            </h3>
-            <p className="text-xs text-[#999999] font-mono">
-              Accessible &amp; zero cumulative layout shift
-            </p>
-          </div>
-
-          {/* Card 4: Delivery Acceleration */}
-          <div className="group relative rounded-2xl p-6 bg-gradient-to-b from-[#15171D] via-[#101216] to-[#0B0C0E] border border-white/10 hover:border-[#AA151B]/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#AA151B]/15 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#AA151B] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FFF8DC] to-[#F1BF00] font-mono tracking-tight">
-                30%
-              </span>
-              <div className="w-10 h-10 rounded-xl bg-[#AA151B]/20 border border-[#AA151B]/40 flex items-center justify-center text-[#AA151B] group-hover:scale-110 group-hover:bg-[#AA151B] group-hover:text-white transition-all">
-                <TrendingUp className="w-5 h-5" />
-              </div>
-            </div>
-            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#FFF8DC] transition-colors">
-              Delivery Acceleration
-            </h3>
-            <p className="text-xs text-[#999999] font-mono">
-              Faster release velocity with automated CI/CD
-            </p>
-          </div>
+          ))}
         </motion.div>
 
       </div>

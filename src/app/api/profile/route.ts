@@ -36,6 +36,13 @@ export async function PUT(req: Request) {
       primaryCTA,
       secondaryCTA,
       resumeUrl,
+      heroCounters,
+      typingRoles,
+      aboutHeading,
+      aboutSubtitle,
+      storyTitle,
+      storySubtitle,
+      pillars,
     } = body;
 
     const updatedProfile = await prisma.profile.upsert({
@@ -53,6 +60,13 @@ export async function PUT(req: Request) {
         primaryCTA,
         secondaryCTA,
         resumeUrl,
+        heroCounters: typeof heroCounters === "string" ? heroCounters : JSON.stringify(heroCounters || []),
+        typingRoles,
+        aboutHeading,
+        aboutSubtitle,
+        storyTitle,
+        storySubtitle,
+        pillars: typeof pillars === "string" ? pillars : JSON.stringify(pillars || []),
       },
       create: {
         id: "default-profile",
@@ -68,13 +82,19 @@ export async function PUT(req: Request) {
         primaryCTA,
         secondaryCTA,
         resumeUrl,
-        heroCounters: "[]",
+        heroCounters: typeof heroCounters === "string" ? heroCounters : JSON.stringify(heroCounters || []),
+        typingRoles,
+        aboutHeading,
+        aboutSubtitle,
+        storyTitle,
+        storySubtitle,
+        pillars: typeof pillars === "string" ? pillars : JSON.stringify(pillars || []),
       },
     });
 
     return NextResponse.json({ success: true, profile: updatedProfile });
   } catch (error) {
+    console.error("Profile update error:", error);
     return NextResponse.json({ error: "Failed to update profile" }, { status: 500 });
   }
 }
-
