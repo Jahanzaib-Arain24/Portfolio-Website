@@ -236,7 +236,7 @@ export default function ProfileAdminPage() {
       </div>
 
       {/* Modern Navigation Tabs */}
-      <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#101217] border border-white/10 w-fit">
+      <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#101217] border border-white/10 w-full sm:w-fit">
         <button
           type="button"
           onClick={() => setActiveTab("hero")}

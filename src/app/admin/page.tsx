@@ -94,7 +94,7 @@ export default async function AdminDashboardOverview() {
   return (
     <div className="space-y-10">
       {/* Top Banner */}
-      <div className="relative rounded-3xl p-8 bg-gradient-to-r from-[#15171D] via-[#101217] to-[#0B0C0E] border border-white/10 shadow-2xl overflow-hidden">
+      <div className="relative rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-gradient-to-r from-[#15171D] via-[#101217] to-[#0B0C0E] border border-white/10 shadow-2xl overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#AA151B]/20 via-[#F1BF00]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-2xl">
@@ -103,7 +103,7 @@ export default async function AdminDashboardOverview() {
             <span>Master Control Hub</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight font-serif-heading mb-3">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight font-serif-heading mb-3">
             Welcome, <span className="text-gradient-vos">Muhammad Jahanzaib</span>
           </h1>
           <p className="text-sm text-[#999999] leading-relaxed">
