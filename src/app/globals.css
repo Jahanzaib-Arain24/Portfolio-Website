@@ -51,6 +51,18 @@ body {
   font-family: var(--font-playfair);
 }
 
+/* Fix browser autofill washing out dark inputs to light blue */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #FFFFFF !important;
+  -webkit-box-shadow: 0 0 0px 1000px #161922 inset !important;
+  box-shadow: 0 0 0px 1000px #161922 inset !important;
+  caret-color: #F1BF00 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 /* Royal Luxury Card */
 .royal-card {
   background-color: var(--bg-card);

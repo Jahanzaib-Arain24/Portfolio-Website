@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { Lock, Mail, ArrowRight, ShieldCheck, Sparkles, Eye, EyeOff } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("arainjhanzaib@gmail.com");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -75,7 +76,7 @@ export default function LoginPage() {
                 className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-[#F1BF00]/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all font-mono"
                 placeholder="arainjhanzaib@gmail.com"
               />
-              <Mail className="w-4 h-4 text-white/40 absolute left-3.5 top-3.5" />
+              <Mail className="w-4 h-4 text-[#F1BF00] absolute left-3.5 top-3.5 pointer-events-none" />
             </div>
           </div>
 
@@ -85,21 +86,37 @@ export default function LoginPage() {
             </label>
             <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-[#F1BF00]/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all font-mono"
+                className="w-full pl-10 pr-11 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-[#F1BF00]/60 focus:bg-white/[0.06] text-white text-sm outline-none transition-all font-mono"
                 placeholder="••••••••••••"
               />
-              <Lock className="w-4 h-4 text-white/40 absolute left-3.5 top-3.5" />
+              {/* Visible Crisp Gold Lock Icon on Left */}
+              <Lock className="w-4 h-4 text-[#F1BF00] absolute left-3.5 top-3.5 pointer-events-none" />
+
+              {/* Show / Hide Password Toggle Icon on Right */}
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3.5 top-3 text-white/40 hover:text-[#F1BF00] transition-colors p-0.5 cursor-pointer"
+                title={showPassword ? "Hide password" : "Show password"}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff className="w-4 h-4 text-[#F1BF00]" />
+                ) : (
+                  <Eye className="w-4 h-4" />
+                )}
+              </button>
             </div>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-6 rounded-2xl bg-[#F1BF00] text-[#0B0C0E] font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-[#F1BF00]/20 hover:bg-[#F1BF00]/90 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50 mt-3"
+            className="w-full py-3.5 px-6 rounded-2xl bg-[#F1BF00] text-[#0B0C0E] font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-[#F1BF00]/20 hover:bg-[#F1BF00]/90 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50 mt-3 cursor-pointer"
           >
             {loading ? (
               <span>Authenticating Session...</span>
