@@ -6,8 +6,11 @@
   <p><i>"Architecting Scalable, High-Performance Web Systems, Bespoke Digital Experiences & High-Conversion Portals"</i></p>
 
   <p align="center">
+    <a href="https://jahanzaib-24.vercel.app/" target="_blank">
+      <img src="https://img.shields.io/badge/🌐_Live_Demo-jahanzaib--24.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo Vercel" />
+    </a>
     <a href="https://jahanzaib-20.netlify.app/" target="_blank">
-      <img src="https://img.shields.io/badge/🌐_Live_Demo-jahanzaib--20.netlify.app-d97706?style=for-the-badge&logo=netlify&logoColor=white" alt="Live Demo" />
+      <img src="https://img.shields.io/badge/🌐_Mirror-jahanzaib--20.netlify.app-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Mirror Netlify" />
     </a>
     <a href="https://wa.me/447840179553" target="_blank">
       <img src="https://img.shields.io/badge/💬_WhatsApp-Direct_Inquiry-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp Direct" />
@@ -29,13 +32,13 @@
   <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-4.3_Design_Tokens-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS 4" />
   <img src="https://img.shields.io/badge/Prisma_ORM-6.19-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma ORM" />
-  <img src="https://img.shields.io/badge/SQLite-Fast_Local_DB-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Neon_PostgreSQL-Serverless_Cloud_DB-00E599?style=for-the-badge&logo=postgresql&logoColor=black" alt="Neon PostgreSQL" />
   <img src="https://img.shields.io/badge/Lucide_Icons-Tree_Shaken-F97316?style=for-the-badge" alt="Lucide Icons" />
   <img src="https://img.shields.io/badge/Responsive-Mobile_First_100%25-d97706?style=for-the-badge&logo=googlechrome&logoColor=white" alt="100% Responsive" />
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
 </p>
 
-> **Muhammad Jahanzaib's Portfolio** is an enterprise-grade personal engineering platform and dynamic Content Management System (CMS) built with Next.js 16 (App Router), React 19, Tailwind CSS 4, Prisma ORM, and SQLite. The platform demonstrates senior engineering discipline featuring real-time administrative CMS controls, dynamic project case studies, an interactive 2x2 responsive skill matrix, career milestones, verified credentials, and high-conversion client communication channels.
+> **Muhammad Jahanzaib's Portfolio** is an enterprise-grade personal engineering platform and dynamic Content Management System (CMS) built with Next.js 16 (App Router), React 19, Tailwind CSS 4, Prisma ORM, and Neon Serverless PostgreSQL. The platform demonstrates senior engineering discipline featuring real-time cloud CMS synchronicity across mobile and desktop, dynamic project case studies, an interactive 2x2 responsive skill matrix, career milestones, verified credentials, and high-conversion client communication channels.
 
 ---
 
@@ -43,7 +46,8 @@
 
 The web application and production portfolio are live and open for recruiter, client, and peer review:
 
-- 🔗 **Production Portfolio**: [https://jahanzaib-20.netlify.app/](https://jahanzaib-20.netlify.app/)
+- 🔗 **Production Deployment (Vercel)**: [https://jahanzaib-24.vercel.app/](https://jahanzaib-24.vercel.app/)
+- 🌐 **Production Mirror (Netlify)**: [https://jahanzaib-20.netlify.app/](https://jahanzaib-20.netlify.app/)
 - 💼 **LinkedIn Profile**: [linkedin.com/in/jahanzaib-arain](https://www.linkedin.com/in/jahanzaib-arain/)
 - 💻 **GitHub Profile**: [@Jahanzaib-Arain24](https://github.com/Jahanzaib-Arain24)
 - 💬 **WhatsApp Direct Line**: [+44 7840 179553](https://wa.me/447840179553)
@@ -86,8 +90,8 @@ Senior frontend engineering isn't just about putting components on a screen. It 
 
 ### 🌟 Core Architectural Principles of this Platform:
 - **Sub-Second First Contentful Paint (FCP)**: Lightning-fast static asset loading, server components, and self-hosted fonts with zero layout shift.
-- **Mobile-First Luxury Architecture**: Every component is carefully engineered from 360px viewports upwards—featuring a tailored 2x2 skill matrix, sticky mobile case study sheet, and single-line headline typography.
-- **Dynamic Content Management (CMS)**: Integrated Prisma ORM with SQLite database powering real-time live updates for projects, skills, career history, and lead tracking.
+- **Mobile-First Luxury Architecture**: Every component is carefully engineered from 360px viewports upwards—featuring a tailored 2x2 skill matrix, sticky mobile case study sheet, single-line headline typography, and mobile-first admin drawer.
+- **Centralized Cloud Content Management (CMS)**: Integrated Prisma ORM with Neon Serverless PostgreSQL powering real-time live updates from mobile devices or desktop with zero deployment delays.
 - **Zero CLS & Visual Stability**: Pre-allocated aspect ratios and containment boundaries eliminate Cumulative Layout Shift completely.
 - **Obsidian & Amber Gold Aesthetic**: A custom luxury visual language balancing deep `#080808` obsidian contrasts with warm amber gold highlights and smooth radial glow accents.
 
@@ -99,9 +103,10 @@ Senior frontend engineering isn't just about putting components on a screen. It 
 - 🎨 **Luxury Obsidian & Amber Gold Design**: Custom dark-mode tokens, subtle radial lighting, and glassmorphism with backdrop filters.
 - 📱 **Mobile-First Responsive Matrix**: Custom layout engine adapting seamlessly from ultra-compact phones (360px) to 4K desktop screens without horizontal scroll.
 - 🔍 **Interactive Project Case Study Modal**: Deep dive into system architecture, technical problems solved, live demo links, and GitHub repositories.
-- 🗄️ **Full Relational Prisma & SQLite CMS**: Complete administrative portal (`/admin`) with secure login for updating skills, projects, certifications, and messages.
+- 🗄️ **Serverless Neon PostgreSQL Cloud DB**: Real-time cloud database syncing live edits made from mobile phone or laptop with instant production propagation.
+- 💾 **1-Click Local Database Backup Runner**: Double-click `backup-database.bat` to instantly export all cloud database records into timestamped JSON files.
 - 📑 **Integrated Resume Hub**: Direct access and embedded download for official engineering CV (`/assets/Jahanzaib-Resume-Frontend-Engineer.pdf`).
-- ⚡ **1-Click Windows Launcher**: Double-click `start.bat` to verify dependencies, initialize the database, and spin up localhost immediately.
+- ⚡ **1-Click Windows Dev Launcher**: Double-click `start.bat` to spin up localhost immediately.
 
 ---
 
@@ -120,7 +125,7 @@ The application is engineered into **10 modular, interconnected components**:
 | **07. Credentials** | [`CertificationsEducationSection.tsx`](src/components/portfolio/CertificationsEducationSection.tsx) | Dual-tab credentials view displaying verified industry certificates and academic degrees. |
 | **08. Contact** | [`ContactSection.tsx`](src/components/portfolio/ContactSection.tsx) | Interactive contact desk with instant toast feedback, message validation, and direct email pipeline. |
 | **09. Footer** | [`Footer.tsx`](src/components/portfolio/Footer.tsx) | Obsidian dark footer with verified social media vectors, status badge, and legal copyright. |
-| **10. Admin CMS** | [`/admin/page.tsx`](src/app/admin/page.tsx) | Enterprise management back-office for updating projects, skills, profile info, and reviewing leads. |
+| **10. Admin CMS** | [`/admin/page.tsx`](src/app/admin/page.tsx) | Enterprise management back-office with responsive slide-in mobile drawer ([`AdminSidebar.tsx`](src/components/admin/AdminSidebar.tsx)) and Neon DB sync. |
 
 ---
 
@@ -138,7 +143,7 @@ The portfolio categorizes technical competencies across 4 specialized production
 │                              │ Tailwind CSS 4, HTML5/CSS3    │ Components, Responsive  │
 ├──────────────────────────────┼───────────────────────────────┼─────────────────────────┤
 │ 🗄️ Backend, Security & CMS   │ Node.js, Express, Prisma ORM, │ REST APIs, JWT Auth,    │
-│                              │ SQLite, PostgreSQL, NextAuth  │ Relational DB Schemas   │
+│                              │ Neon PostgreSQL, NextAuth     │ Relational Cloud DB     │
 ├──────────────────────────────┼───────────────────────────────┼─────────────────────────┤
 │ 🧪 Testing, QA & a11y        │ Jest, React Testing Library,  │ TDD, Unit Tests,        │
 │                              │ Lighthouse, WCAG 2.1 AA       │ Zero CLS, Cross-Browser │
@@ -227,8 +232,8 @@ The portfolio is built with a **mobile-first, adaptive layout engine** thoroughl
 - ![Lucide Icons](https://img.shields.io/badge/Lucide-SVG_Icons-F97316?style=flat) **Lucide React**: Tree-shakeable SVG vector icons.
 
 ### Backend & Database
-- ![Prisma](https://img.shields.io/badge/Prisma_ORM-6.19-2D3748?style=flat&logo=prisma&logoColor=white) **Prisma ORM**: Type-safe relational database queries and automatic schema migrations.
-- ![SQLite](https://img.shields.io/badge/SQLite-Local_Engine-003B57?style=flat&logo=sqlite&logoColor=white) **SQLite**: Zero-configuration embedded database for CMS entities and leads.
+- ![Prisma](https://img.shields.io/badge/Prisma_ORM-6.19-2D3748?style=flat&logo=prisma&logoColor=white) **Prisma ORM**: Type-safe relational database queries and automated migrations.
+- ![Neon PostgreSQL](https://img.shields.io/badge/Neon_PostgreSQL-Serverless_Cloud_DB-00E599?style=flat&logo=postgresql&logoColor=black) **Neon PostgreSQL**: Serverless cloud relational database with pooling and automated PITR.
 - ![Nodemailer](https://img.shields.io/badge/Nodemailer-SMTP-22B573?style=flat) **Nodemailer**: Asynchronous email delivery for incoming contact form inquiries.
 
 ---
@@ -237,6 +242,7 @@ The portfolio is built with a **mobile-first, adaptive layout engine** thoroughl
 
 ```text
 portfolio-website/
+├── backups/                               # Timestamped database snapshots (ignored from git)
 ├── public/                                # Optimized static production assets
 │   ├── assets/                            # High-resolution project banners & CV
 │   │   ├── Jahanzaib-Resume-Frontend-Engineer.pdf # Official Resume PDF
@@ -251,16 +257,19 @@ portfolio-website/
 │   ├── favicon.svg                        # Vector tab icon
 │   └── icon.svg                           # Monogram logo vector
 ├── prisma/
-│   ├── schema.prisma                      # Database models (User, Project, Skill, Message)
-│   └── dev.db                             # SQLite local database
+│   ├── schema.prisma                      # PostgreSQL cloud schema (Profile, Project, Skill, Message)
+│   └── seed.ts                            # Database initialization script
+├── scripts/
+│   ├── backup.js                          # Automated Neon Cloud Database export script
+│   └── generate-favicon.js                # Vector favicon generator
 ├── src/
 │   ├── app/                               # Next.js 16 App Router
 │   │   ├── layout.tsx                     # Global HTML shell, SEO metadata, fonts & viewport
-│   │   ├── page.tsx                       # Single-page smooth scroll assembler
+│   │   ├── page.tsx                       # High-performance ISR page assembler
 │   │   ├── globals.css                    # Obsidian design tokens, glows & responsive rules
-│   │   ├── login/page.tsx                 # Protected administrative login
+│   │   ├── login/page.tsx                 # Protected administrative login (with show/hide eye toggle)
 │   │   ├── admin/                         # Enterprise CMS Management Suite
-│   │   │   ├── layout.tsx                 # Admin dashboard layout
+│   │   │   ├── layout.tsx                 # Admin dashboard shell & session validator
 │   │   │   ├── page.tsx                   # Admin metrics & quick overview
 │   │   │   ├── projects/page.tsx          # Real-time project CRUD
 │   │   │   ├── skills/page.tsx            # Skills & proficiency manager
@@ -270,7 +279,7 @@ portfolio-website/
 │   │   │   ├── messages/page.tsx          # Direct client inbox & inquiry manager
 │   │   │   └── profile/page.tsx           # Profile metadata & CV manager
 │   │   └── api/                           # Secure REST Route Handlers
-│   │       ├── auth/route.ts              # Authentication & JWT handler
+│   │       ├── auth/route.ts              # Authentication & JWT session handler
 │   │       ├── contact/route.ts           # Contact message processing & storage
 │   │       ├── projects/route.ts          # Projects CRUD endpoint
 │   │       ├── skills/route.ts            # Skills CRUD endpoint
@@ -292,12 +301,13 @@ portfolio-website/
 │   │   │   ├── ContactSection.tsx         # Contact desk & direct pipeline
 │   │   │   └── Footer.tsx                 # Obsidian footer & social vectors
 │   │   ├── admin/
+│   │   │   ├── AdminSidebar.tsx           # Mobile-First responsive header & slide-in drawer
 │   │   │   └── FileUploader.tsx           # Asset upload component
 │   │   └── ui/
 │   │       ├── AnimatedSection.tsx        # Viewport scroll trigger wrapper
 │   │       └── Icons.tsx                  # Vector icon mapping
 │   ├── lib/
-│   │   ├── prisma.ts                      # Singleton Prisma connection
+│   │   ├── prisma.ts                      # Singleton Prisma PostgreSQL connection
 │   │   ├── mailer.ts                      # Nodemailer SMTP engine
 │   │   ├── animations.ts                  # Reusable physics motion variants
 │   │   └── utils.ts                       # Class merging utility
@@ -305,12 +315,13 @@ portfolio-website/
 │       └── index.ts                       # Central TypeScript interfaces
 ├── .gitattributes                         # Git LF normalization & linguist rules
 ├── .gitignore                             # Git exclusion list
+├── backup-database.bat                    # 1-Click Cloud Database Backup Runner (Windows)
 ├── CONTRIBUTING.md                        # Open-source contribution guidelines
 ├── DEPLOYMENT.md                          # Production deployment manual (Vercel, Netlify, VPS)
 ├── LICENSE                                # Official MIT License
 ├── PROJECT_OVERVIEW.md                    # In-depth technical architecture blueprint
 ├── README.md                              # Official project documentation
-├── start.bat                              # 1-Click Windows localhost launcher
+├── start.bat                              # 1-Click Windows localhost dev launcher
 ├── eslint.config.mjs                      # ESLint configuration
 ├── next.config.ts                         # Next.js configuration
 ├── package.json                           # Project dependencies & scripts
@@ -331,8 +342,8 @@ portfolio-website/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Jahanzaib-Arain24/portfolio-website.git
-   cd portfolio-website
+   git clone https://github.com/Jahanzaib-Arain24/Portfolio-Website.git
+   cd Portfolio-Website
    ```
 
 2. **Install Dependencies**
@@ -340,13 +351,22 @@ portfolio-website/
    npm install
    ```
 
-3. **Initialize Prisma Database**
+3. **Configure Environment Variables**
+   Create a `.env` file in the root directory (refer to `.env.example`):
+   ```env
+   DATABASE_URL="postgresql://neondb_owner:YOUR_KEY@ep-YOUR-DB-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
+   DATABASE_URL_UNPOOLED="postgresql://neondb_owner:YOUR_KEY@ep-YOUR-DB.us-east-1.aws.neon.tech/neondb?sslmode=require"
+   ADMIN_EMAIL="arainjhanzaib@gmail.com"
+   ADMIN_PASSWORD="YourPasswordHere"
+   NEXTAUTH_SECRET="your-super-secret-key"
+   ```
+
+4. **Synchronize Cloud Database Client**
    ```bash
-   npx prisma db push
    npx prisma generate
    ```
 
-4. **Launch the Application**
+5. **Launch the Application**
 
    * **Option A: 1-Click Launcher (Windows)**  
      Simply double-click **`start.bat`** in the project folder.  
@@ -358,9 +378,8 @@ portfolio-website/
      ```
      Open your browser and navigate to: 👉 **`http://localhost:3000`**
 
-5. **Access the Admin CMS**  
-   Navigate to 👉 **`http://localhost:3000/admin`**  
-   Login credentials can be configured in `.env`.
+6. **Create an Instant Database Backup (Windows)**  
+   Double-click **`backup-database.bat`** to export a full timestamped snapshot of all cloud records to `backups/`.
 
 ---
 
@@ -398,7 +417,7 @@ This project is open-sourced under the **MIT License** — see the [LICENSE](LIC
 **Muhammad Jahanzaib**  
 *Senior Frontend & Full-Stack Web Engineer*
 
-- 🌐 **Portfolio**: [jahanzaib-20.netlify.app](https://jahanzaib-20.netlify.app/)
+- 🌐 **Portfolio**: [jahanzaib-24.vercel.app](https://jahanzaib-24.vercel.app/)
 - 💼 **LinkedIn**: [@jahanzaib-arain](https://www.linkedin.com/in/jahanzaib-arain/)
 - 📧 **Email**: [arainjhanzaib@gmail.com](mailto:arainjhanzaib@gmail.com)
 - 💬 **WhatsApp**: [+44 7840 179553](https://wa.me/447840179553)
