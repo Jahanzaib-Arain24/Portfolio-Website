@@ -2,9 +2,13 @@ import { PrismaClient } from "@prisma/client";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
-// Prefer POSTGRES_PRISMA_URL or DATABASE_URL from Neon / Vercel
-if (!process.env.DATABASE_URL && process.env.POSTGRES_PRISMA_URL) {
-  process.env.DATABASE_URL = process.env.POSTGRES_PRISMA_URL;
+// Prefer Neon PostgreSQL URL over any legacy local SQLite string
+if (!process.env.DATABASE_URL || process.env.DATABASE_URL.startsWith("file:")) {
+  if (process.env.POSTGRES_PRISMA_URL) {
+    process.env.DATABASE_URL = process.env.POSTGRES_PRISMA_URL;
+  } else if (process.env.POSTGRES_URL) {
+    process.env.DATABASE_URL = process.env.POSTGRES_URL;
+  }
 }
 
 export const prisma =
