@@ -1,19 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import path from "path";
-import fs from "fs";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
-// Automatically resolve SQLite file path in Vercel Serverless / production runtime
-if (!process.env.DATABASE_URL || process.env.DATABASE_URL.startsWith("file:")) {
-  const prismaDb = path.join(process.cwd(), "prisma", "dev.db");
-  const rootDb = path.join(process.cwd(), "dev.db");
-
-  if (fs.existsSync(prismaDb)) {
-    process.env.DATABASE_URL = `file:${prismaDb}`;
-  } else if (fs.existsSync(rootDb)) {
-    process.env.DATABASE_URL = `file:${rootDb}`;
-  }
+// Prefer POSTGRES_PRISMA_URL or DATABASE_URL from Neon / Vercel
+if (!process.env.DATABASE_URL && process.env.POSTGRES_PRISMA_URL) {
+  process.env.DATABASE_URL = process.env.POSTGRES_PRISMA_URL;
 }
 
 export const prisma =
