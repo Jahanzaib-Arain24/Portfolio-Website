@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
   // React Strict Mode for robust zero-defect execution
   reactStrictMode: true,
 
+  // Ensure SQLite database and Prisma schema are bundled in Vercel Serverless output
+  outputFileTracingIncludes: {
+    "/**": ["./prisma/dev.db", "./dev.db", "./prisma/schema.prisma"],
+  },
+
   // Image Optimization configuration
   images: {
     formats: ["image/avif", "image/webp"],

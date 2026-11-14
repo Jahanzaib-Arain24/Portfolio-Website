@@ -9,64 +9,77 @@ import CertificationsEducationSection from "@/components/portfolio/Certification
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
 
-export const dynamic = "force-dynamic";
+// Use Incremental Static Regeneration (ISR) so Vercel prerenders HTML at build time
+// and serves it instantly with zero serverless database initialization failures.
+export const revalidate = 60;
 
 export default async function PortfolioPage() {
-  // Fetch all portfolio data in parallel via Promise.all (Zero waterfall latency)
-  const [
-    profile,
-    rawProjects,
-    categories,
-    rawExperiences,
-    certifications,
-    education,
-    settings,
-  ] = await Promise.all([
-    prisma.profile.findUnique({
-      where: { id: "default-profile" },
-      include: { socialLinks: { orderBy: { order: "asc" } } },
-    }),
-    prisma.project.findMany({
-      orderBy: [{ pinned: "desc" }, { order: "asc" }],
-    }),
-    prisma.skillCategory.findMany({
-      orderBy: { order: "asc" },
-      include: {
-        skills: {
-          orderBy: [{ pinned: "desc" }, { order: "asc" }],
+  let profile = null;
+  let rawProjects: any[] = [];
+  let categories: any[] = [];
+  let rawExperiences: any[] = [];
+  let certifications: any[] = [];
+  let education: any[] = [];
+  let settings: any = null;
+
+  try {
+    const results = await Promise.all([
+      prisma.profile.findUnique({
+        where: { id: "default-profile" },
+        include: { socialLinks: { orderBy: { order: "asc" } } },
+      }),
+      prisma.project.findMany({
+        orderBy: [{ pinned: "desc" }, { order: "asc" }],
+      }),
+      prisma.skillCategory.findMany({
+        orderBy: { order: "asc" },
+        include: {
+          skills: {
+            orderBy: [{ pinned: "desc" }, { order: "asc" }],
+          },
         },
-      },
-    }),
-    prisma.experience.findMany({
-      orderBy: { order: "asc" },
-    }),
-    prisma.certification.findMany({
-      orderBy: { order: "asc" },
-    }),
-    prisma.education.findMany({
-      orderBy: { order: "asc" },
-    }),
-    prisma.siteSettings.findUnique({
-      where: { id: "default-settings" },
-    }),
-  ]);
+      }),
+      prisma.experience.findMany({
+        orderBy: { order: "asc" },
+      }),
+      prisma.certification.findMany({
+        orderBy: { order: "asc" },
+      }),
+      prisma.education.findMany({
+        orderBy: { order: "asc" },
+      }),
+      prisma.siteSettings.findUnique({
+        where: { id: "default-settings" },
+      }),
+    ]);
+
+    profile = results[0];
+    rawProjects = results[1] || [];
+    categories = results[2] || [];
+    rawExperiences = results[3] || [];
+    certifications = results[4] || [];
+    education = results[5] || [];
+    settings = results[6];
+  } catch (err) {
+    console.error("Database fetch error:", err);
+  }
 
   const projects = rawProjects.map((p) => ({
     ...p,
-    techStack: JSON.parse(p.techStack || "[]"),
-    highlights: JSON.parse(p.highlights || "[]"),
+    techStack: typeof p.techStack === "string" ? JSON.parse(p.techStack || "[]") : (p.techStack || []),
+    highlights: typeof p.highlights === "string" ? JSON.parse(p.highlights || "[]") : (p.highlights || []),
   }));
 
   const experiences = rawExperiences.map((e) => ({
     ...e,
-    achievements: JSON.parse(e.achievements || "[]"),
+    achievements: typeof e.achievements === "string" ? JSON.parse(e.achievements || "[]") : (e.achievements || []),
   }));
 
-  const counters = profile ? JSON.parse(profile.heroCounters || "[]") : [];
+  const counters = profile && profile.heroCounters ? JSON.parse(profile.heroCounters || "[]") : [];
 
   return (
     <main className="min-h-screen bg-[#090a0f] text-slate-100 flex flex-col">
-      <Navbar resumeUrl={profile?.resumeUrl || "/assets/Jahanzaib-Resume.pdf"} />
+      <Navbar resumeUrl={profile?.resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf"} />
 
       {profile && (
         <HeroSection
