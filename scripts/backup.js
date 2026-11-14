@@ -76,3 +76,4 @@ exportBackup()
   .finally(async () => {
     await prisma.$disconnect();
   });
+

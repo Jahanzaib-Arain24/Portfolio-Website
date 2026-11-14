@@ -15,3 +15,4 @@ echo Backup file created successfully!
 echo Press any key to open the backups folder...
 pause >nul
 start backups
+
