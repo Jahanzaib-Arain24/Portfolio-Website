@@ -318,7 +318,49 @@ async function main() {
     ]
   });
 
-  // 7. Complete Education (Including Matriculation from old website)
+  // 7. Verified Certifications
+  await prisma.certification.deleteMany();
+  await prisma.certification.createMany({
+    data: [
+      {
+        title: "Meta Front-End Developer Professional Certificate",
+        issuer: "Meta (Coursera)",
+        details: "9-Course Specialization covering React.js, Advanced React, JavaScript, Version Control, and Front-End Capstone",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/professional-cert/IRVNEHQTY3FS",
+        order: 1
+      },
+      {
+        title: "React Basics & Advanced React",
+        issuer: "Meta",
+        details: "Component hierarchy, hooks, state machines, context API, and performance profiling",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/verify/P5RQKJZIM85H",
+        order: 2
+      },
+      {
+        title: "Programming with JavaScript",
+        issuer: "Meta",
+        details: "Data structures, modern ES6+ paradigms, DOM manipulation, and asynchronous programming",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/verify/CBQIUWPEZYCI",
+        order: 3
+      },
+      {
+        title: "Version Control with Git & GitHub",
+        issuer: "Meta",
+        details: "Branching strategies, collaborative workflows, PR reviews, and CI automation",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/verify/883U7DDE465Q",
+        order: 4
+      },
+      {
+        title: "Build a Full Website using WordPress",
+        issuer: "Coursera Project Network",
+        details: "CMS Architecture and deployment",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/verify/WBBHQWMQ76MR",
+        order: 5
+      }
+    ]
+  });
+
+  // 8. Complete Education (Including Matriculation from old website)
   await prisma.education.deleteMany();
   await prisma.education.createMany({
     data: [
