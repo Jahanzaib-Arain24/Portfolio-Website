@@ -1,4 +1,4 @@
-# 🚀 Muhammad Jahanzaib — Senior Frontend & Full-Stack Web Engineer
+# 🚀 Muhammad Jahanzaib — Frontend & Full-Stack Web Engineer
 
 <div align="center">
   <img src="public/icon.svg" alt="Muhammad Jahanzaib Monogram" width="120px">
@@ -9,10 +9,7 @@
     <a href="https://jahanzaib-24.vercel.app/" target="_blank">
       <img src="https://img.shields.io/badge/🌐_Live_Demo-jahanzaib--24.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo Vercel" />
     </a>
-    <a href="https://jahanzaib-20.netlify.app/" target="_blank">
-      <img src="https://img.shields.io/badge/🌐_Mirror-jahanzaib--20.netlify.app-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Mirror Netlify" />
-    </a>
-    <a href="https://wa.me/447840179553" target="_blank">
+    <a href="https://wa.me/923123358542" target="_blank">
       <img src="https://img.shields.io/badge/💬_WhatsApp-Direct_Inquiry-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp Direct" />
     </a>
     <a href="https://www.linkedin.com/in/jahanzaib-arain/" target="_blank">
@@ -38,7 +35,7 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
 </p>
 
-> **Muhammad Jahanzaib's Portfolio** is an enterprise-grade personal engineering platform and dynamic Content Management System (CMS) built with Next.js 16 (App Router), React 19, Tailwind CSS 4, Prisma ORM, and Neon Serverless PostgreSQL. The platform demonstrates senior engineering discipline featuring real-time cloud CMS synchronicity across mobile and desktop, dynamic project case studies, an interactive 2x2 responsive skill matrix, career milestones, verified credentials, and high-conversion client communication channels.
+> **Muhammad Jahanzaib's Portfolio** is an enterprise-grade personal engineering platform and dynamic Content Management System (CMS) built with Next.js 16 (App Router), React 19, Tailwind CSS 4, Prisma ORM, and Neon Serverless PostgreSQL. The platform demonstrates modern engineering discipline featuring real-time cloud CMS synchronicity across mobile and desktop, dynamic project case studies, an interactive 2x2 responsive skill matrix, career milestones, verified credentials, and high-conversion client communication channels.
 
 ---
 
@@ -47,10 +44,9 @@
 The web application and production portfolio are live and open for recruiter, client, and peer review:
 
 - 🔗 **Production Deployment (Vercel)**: [https://jahanzaib-24.vercel.app/](https://jahanzaib-24.vercel.app/)
-- 🌐 **Production Mirror (Netlify)**: [https://jahanzaib-20.netlify.app/](https://jahanzaib-20.netlify.app/)
 - 💼 **LinkedIn Profile**: [linkedin.com/in/jahanzaib-arain](https://www.linkedin.com/in/jahanzaib-arain/)
 - 💻 **GitHub Profile**: [@Jahanzaib-Arain24](https://github.com/Jahanzaib-Arain24)
-- 💬 **WhatsApp Direct Line**: [+44 7840 179553](https://wa.me/447840179553)
+- 💬 **WhatsApp Direct Line**: [+92 312 3358542](https://wa.me/923123358542)
 - 📧 **Official Engineering Email**: [arainjhanzaib@gmail.com](mailto:arainjhanzaib@gmail.com)
 - 📍 **Location**: Pakistan *(Available for Global Remote Engineering Roles & On-site Relocation)*
 
@@ -86,7 +82,7 @@ The web application and production portfolio are live and open for recruiter, cl
 
 ## 📖 Overview & Core Engineering Philosophy
 
-Senior frontend engineering isn't just about putting components on a screen. It demands **microsecond performance, mathematical layout precision, rock-solid accessibility (WCAG AA), and maintainable architecture**.
+Modern frontend & full-stack engineering isn't just about putting components on a screen. It demands **microsecond performance, mathematical layout precision, rock-solid accessibility (WCAG AA), and maintainable architecture**.
 
 ### 🌟 Core Architectural Principles of this Platform:
 - **Sub-Second First Contentful Paint (FCP)**: Lightning-fast static asset loading, server components, and self-hosted fonts with zero layout shift.
@@ -149,7 +145,7 @@ The portfolio categorizes technical competencies across 4 specialized production
 │                              │ Lighthouse, WCAG 2.1 AA       │ Zero CLS, Cross-Browser │
 ├──────────────────────────────┼───────────────────────────────┼─────────────────────────┤
 │ 🛠️ DevOps & Workflow Tools   │ Git, GitHub, Docker, Vercel,  │ CI/CD Pipelines, Linux, │
-│                              │ Netlify, Postman, Vite        │ Edge Optimization       │
+│                              │ Postman, Vite, Cloud Relational │ Edge Optimization       │
 └──────────────────────────────┴───────────────────────────────┴─────────────────────────┘
 ```
 
@@ -163,10 +159,10 @@ Live client and open-source applications built by Muhammad Jahanzaib:
 | :-: | :--- | :--- | :--- | :--- |
 | **01** | **Vantix Digital** | Modern Agency Web Platform | Next.js 16, React 19, Tailwind CSS, TypeScript | [Live Demo](https://vantix-digital.netlify.app/) • [GitHub](https://github.com/Jahanzaib-Arain24/Vantix-Digital) |
 | **02** | **Voice of Spain (VOS Media)** | Multilingual News Portal | Next.js, Multilingual (EN/ES/HI/UR), High Concurrency | [Live Demo](https://www.vos.media/) |
-| **03** | **Little Lemon Restaurant** | Table Reservation System | React 19, Meta Front-End Capstone, Jest, a11y | [Live Demo](https://little-lemon-table-reservation-system.netlify.app/) • [GitHub](https://github.com/Jahanzaib-Arain24/little-lemon-table-reservation-system) |
-| **04** | **Saint Albert's University** | Online Higher-Ed Campus | PHP 8, Session Security, Academic Royal Charter | [Live Demo](https://saiu.education/) |
-| **05** | **The University of Penal (UNIPASS)** | Security Sciences Portal | 60+ Programmes, reCAPTCHA v2, Consortium Registry | [Live Demo](https://www.pass.university/) |
-| **06** | **TaskBuddy Web Portal** | Task & Gig Marketplace | 4 Modules, ATS Hiring Pipeline, 785 Unit Tests | [Live Demo](https://taskbuddy-portal.infinityfreeapp.com/) |
+| **03** | **Saint Albert's International University** | Online Higher-Ed Campus | PHP 8, Session Security, Academic Royal Charter | [Live Demo](https://saiu.education/) • [GitHub](https://github.com/Jahanzaib-Arain24/Saint-Albert-s-International-University) |
+| **04** | **The National University of Penal (UNIPASS)** | Security Sciences Portal | 60+ Programmes, reCAPTCHA v2, Consortium Registry | [Live Demo](https://www.pass.university/) • [GitHub](https://github.com/Jahanzaib-Arain24/National-University-Of-Penal-Website) |
+| **05** | **TaskBuddy Web Portal** | Task & Gig Marketplace | 4 Modules, ATS Hiring Pipeline, 785 Unit Tests | [Live Demo](https://taskbuddy-portal.infinityfreeapp.com/) • [GitHub](https://github.com/Jahanzaib-Arain24/TaskBuddy-Web-Portal) |
+| **06** | **Little Lemon Restaurant** | Table Reservation System | React 19, Meta Front-End Capstone, Jest, a11y | [Live Demo](https://littlelemon-bistro.netlify.app/) • [GitHub](https://github.com/Jahanzaib-Arain24/Little-Lemon-Restaurant) |
 
 ---
 
@@ -179,28 +175,28 @@ Live client and open-source applications built by Muhammad Jahanzaib:
       <img src="public/assets/Vantix-Digital.png" width="100%" alt="Vantix Digital Platform" />
     </td>
     <td width="50%" align="center">
-      <b>🍋 02. Little Lemon — Table Reservation App</b><br/>
-      <img src="public/assets/Little-Lemon.png" width="100%" alt="Little Lemon Table Reservation" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <b>📰 03. Voice of Spain — Multilingual News Portal</b><br/>
+      <b>📰 02. Voice of Spain — Multilingual News Portal</b><br/>
       <img src="public/assets/voice-of-spain.png" width="100%" alt="Voice of Spain Portal" />
     </td>
-    <td width="50%" align="center">
-      <b>💼 04. TaskBuddy — Intelligent Gig & Task Marketplace</b><br/>
-      <img src="public/assets/taskbuddy-web-portal.png" width="100%" alt="TaskBuddy Web Portal" />
-    </td>
   </tr>
   <tr>
     <td width="50%" align="center">
-      <b>🎓 05. Saint Albert's International University</b><br/>
+      <b>🎓 03. Saint Albert's International University</b><br/>
       <img src="public/assets/saint-albert-university.png" width="100%" alt="Saint Albert University Portal" />
     </td>
     <td width="50%" align="center">
-      <b>🏛️ 06. The National University of Penal (UNIPASS)</b><br/>
+      <b>🏛️ 04. The National University of Penal (UNIPASS)</b><br/>
       <img src="public/assets/the-national-university-of-penal.png" width="100%" alt="UNIPASS University Portal" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>💼 05. TaskBuddy — Intelligent Gig & Task Marketplace</b><br/>
+      <img src="public/assets/taskbuddy-web-portal.png" width="100%" alt="TaskBuddy Web Portal" />
+    </td>
+    <td width="50%" align="center">
+      <b>🍋 06. Little Lemon — Table Reservation App</b><br/>
+      <img src="public/assets/Little-Lemon.png" width="100%" alt="Little Lemon Table Reservation" />
     </td>
   </tr>
 </table>
@@ -415,12 +411,12 @@ This project is open-sourced under the **MIT License** — see the [LICENSE](LIC
 ## 👤 Author & Engineering Leadership
 
 **Muhammad Jahanzaib**  
-*Senior Frontend & Full-Stack Web Engineer*
+*Frontend & Full-Stack Web Engineer*
 
 - 🌐 **Portfolio**: [jahanzaib-24.vercel.app](https://jahanzaib-24.vercel.app/)
 - 💼 **LinkedIn**: [@jahanzaib-arain](https://www.linkedin.com/in/jahanzaib-arain/)
 - 📧 **Email**: [arainjhanzaib@gmail.com](mailto:arainjhanzaib@gmail.com)
-- 💬 **WhatsApp**: [+44 7840 179553](https://wa.me/447840179553)
+- 💬 **WhatsApp**: [+92 312 3358542](https://wa.me/923123358542)
 - 💻 **GitHub**: [@Jahanzaib-Arain24](https://github.com/Jahanzaib-Arain24)
 
 ---
