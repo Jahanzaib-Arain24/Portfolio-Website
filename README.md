@@ -129,25 +129,12 @@ The application is engineered into **10 modular, interconnected components**:
 
 The portfolio categorizes technical competencies across 4 specialized production domains:
 
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                        MUHAMMAD JAHANZAIB — TECHNICAL STACK                            │
-├──────────────────────────────┬───────────────────────────────┬─────────────────────────┤
-│ Domain Category              │ Core Technologies             │ Key Competencies        │
-├──────────────────────────────┼───────────────────────────────┼─────────────────────────┤
-│ 💻 Frontend & Core Web       │ React 19, Next.js 16, TS,     │ App Router, Server      │
-│                              │ Tailwind CSS 4, HTML5/CSS3    │ Components, Responsive  │
-├──────────────────────────────┼───────────────────────────────┼─────────────────────────┤
-│ 🗄️ Backend, Security & CMS   │ Node.js, Express, Prisma ORM, │ REST APIs, JWT Auth,    │
-│                              │ Neon PostgreSQL, NextAuth     │ Relational Cloud DB     │
-├──────────────────────────────┼───────────────────────────────┼─────────────────────────┤
-│ 🧪 Testing, QA & a11y        │ Jest, React Testing Library,  │ TDD, Unit Tests,        │
-│                              │ Lighthouse, WCAG 2.1 AA       │ Zero CLS, Cross-Browser │
-├──────────────────────────────┼───────────────────────────────┼─────────────────────────┤
-│ 🛠️ DevOps & Workflow Tools   │ Git, GitHub, Docker, Vercel,  │ CI/CD Pipelines, Linux, │
-│                              │ Postman, Vite, Cloud Relational │ Edge Optimization       │
-└──────────────────────────────┴───────────────────────────────┴─────────────────────────┘
-```
+| Domain Category | Core Technologies | Key Competencies |
+| :--- | :--- | :--- |
+| **💻 Frontend & Core Web** | React 19, Next.js 16, TypeScript, Tailwind CSS 4, HTML5/CSS3 | App Router, Server Components, Mobile-First Responsive, State Management |
+| **🗄️ Backend, Security & CMS** | Node.js, Express, Prisma ORM, Neon PostgreSQL, NextAuth | RESTful APIs, JWT Authentication, Relational Cloud DB, Secure CRUD |
+| **🧪 Testing, QA & a11y** | Jest, React Testing Library, Google Lighthouse, WCAG 2.1 AA | TDD, Component Unit Tests, Zero CLS, Cross-Browser Compatibility |
+| **🛠️ DevOps & Workflow Tools** | Git, GitHub, Docker, Vercel, Postman, Vite | CI/CD Automation, Linux Environments, Edge Optimization, Production Monitoring |
 
 ---
 
