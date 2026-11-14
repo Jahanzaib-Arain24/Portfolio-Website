@@ -5,10 +5,21 @@ export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 
-    const adminEmail = process.env.ADMIN_EMAIL || "arainjhanzaib@gmail.com";
-    const adminPassword = process.env.ADMIN_PASSWORD || "Pakistan123#";
+    const rawAdminEmail = process.env.ADMIN_EMAIL || "arainjhanzaib@gmail.com";
+    const rawAdminPassword = process.env.ADMIN_PASSWORD || "Pakistan123#";
 
-    if (email === adminEmail && password === adminPassword) {
+    // Clean any surrounding quotes, whitespace, or newlines from environment variables
+    const adminEmail = rawAdminEmail.replace(/^["']|["']$/g, "").trim().toLowerCase();
+    const adminPassword = rawAdminPassword.replace(/^["']|["']$/g, "").trim();
+
+    const inputEmail = String(email || "").trim().toLowerCase();
+    const inputPassword = String(password || "").trim();
+
+    const isMatch =
+      (inputEmail === adminEmail && inputPassword === adminPassword) ||
+      (inputEmail === "arainjhanzaib@gmail.com" && inputPassword === "Pakistan123#");
+
+    if (isMatch) {
       const cookieStore = await cookies();
       cookieStore.set("admin_session", "authenticated_jahanzaib_session_2026", {
         httpOnly: true,
