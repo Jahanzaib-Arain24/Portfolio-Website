@@ -35,7 +35,7 @@ async function main() {
       primaryCTA: "Explore Projects",
       secondaryCTA: "View Full Resume",
       resumeUrl: "/assets/jahanzaib-dev.pdf",
-      avatarUrl: "/assets/old-portfolio-full.png",
+      avatarUrl: "/assets/about-me.png",
       heroCounters: JSON.stringify([
         { label: "Production Systems Shipped", value: "6+" },
         { label: "Automated QA Tests Passed", value: "785+" },
@@ -57,7 +57,7 @@ async function main() {
       primaryCTA: "Explore Projects",
       secondaryCTA: "View Full Resume",
       resumeUrl: "/assets/jahanzaib-dev.pdf",
-      avatarUrl: "/assets/old-portfolio-full.png",
+      avatarUrl: "/assets/about-me.png",
       heroCounters: JSON.stringify([
         { label: "Production Systems Shipped", value: "6+" },
         { label: "Automated QA Tests Passed", value: "785+" },
@@ -223,7 +223,7 @@ async function main() {
         ]),
         liveUrl: "https://vantix-digital.netlify.app/",
         githubUrl: "https://github.com/Jahanzaib-Arain24/Vantix-Digital",
-        imageUrl: "/projects/vantix.png",
+        imageUrl: "/assets/Vantix-Digital.png",
         featured: true,
         order: 1
       },
@@ -242,7 +242,7 @@ async function main() {
         ]),
         liveUrl: "https://taskbuddy-portal.infinityfreeapp.com/",
         githubUrl: "https://github.com/Jahanzaib-Arain24/TaskBuddy-Web-Portal",
-        imageUrl: "/projects/taskbuddy.png",
+        imageUrl: "/assets/taskbuddy-web-portal.png",
         featured: true,
         order: 2
       },
@@ -260,7 +260,7 @@ async function main() {
         ]),
         liveUrl: "https://www.vos.media/",
         githubUrl: null,
-        imageUrl: "/projects/vos.png",
+        imageUrl: "/assets/voice-of-spain.png",
         featured: true,
         order: 3
       },
@@ -277,7 +277,7 @@ async function main() {
         ]),
         liveUrl: "https://www.pass.university/",
         githubUrl: "https://github.com/Jahanzaib-Arain24/National-University-Of-Penal-Website",
-        imageUrl: "/projects/unipass.png",
+        imageUrl: "/assets/the-national-university-of-penal.png",
         featured: false,
         order: 4
       },
@@ -294,7 +294,7 @@ async function main() {
         ]),
         liveUrl: "https://saiu.education/",
         githubUrl: "https://github.com/Jahanzaib-Arain24/Saint-Albert-s-International-University",
-        imageUrl: "/projects/saiu.png",
+        imageUrl: "/assets/saint-albert-university.png",
         featured: false,
         order: 5
       },
@@ -311,7 +311,7 @@ async function main() {
         ]),
         liveUrl: "https://jahanzaib-20.netlify.app/",
         githubUrl: "https://github.com/Jahanzaib-Arain24/Little-Lemon-Restaurant",
-        imageUrl: "/projects/littlelemon.png",
+        imageUrl: "/assets/Little-Lemon.png",
         featured: false,
         order: 6
       }
