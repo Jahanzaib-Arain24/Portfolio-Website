@@ -308,7 +308,7 @@ async function main() {
           "Unit tested booking state transitions using Jest and React Testing Library.",
           "Designed mobile-first intuitive food ordering and menu browsing interfaces."
         ]),
-        liveUrl: "https://jahanzaib-20.netlify.app/",
+        liveUrl: "https://littlelemon-bistro.netlify.app/",
         githubUrl: "https://github.com/Jahanzaib-Arain24/Little-Lemon-Restaurant",
         imageUrl: "/assets/Little-Lemon.png",
         featured: false,
