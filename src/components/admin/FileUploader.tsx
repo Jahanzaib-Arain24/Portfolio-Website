@@ -26,8 +26,9 @@ export default function FileUploader({
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const isImage = value && (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg") || value.endsWith(".webp") || value.endsWith(".svg"));
-  const isPdf = value && value.endsWith(".pdf");
+  const cleanVal = (value || "").split("?")[0].toLowerCase();
+  const isImage = Boolean(cleanVal && (cleanVal.endsWith(".png") || cleanVal.endsWith(".jpg") || cleanVal.endsWith(".jpeg") || cleanVal.endsWith(".webp") || cleanVal.endsWith(".svg") || cleanVal.endsWith(".gif")));
+  const isPdf = Boolean(cleanVal && cleanVal.endsWith(".pdf"));
 
   const handleUpload = async (file: File) => {
     setError(null);

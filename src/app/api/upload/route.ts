@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 
@@ -12,18 +13,30 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    // Target directory: public/assets
-    const uploadDir = path.join(process.cwd(), "public", "assets");
-    await mkdir(uploadDir, { recursive: true });
-
-    // Determine clean filename
     const originalName = file.name.replace(/\s+/g, "-");
     const filename = customName
       ? `${customName.replace(/\s+/g, "-")}${path.extname(originalName)}`
       : originalName;
+
+    // 1. Cloud Upload via Vercel Blob (Primary for production & local with token)
+    if (process.env.BLOB_READ_WRITE_TOKEN) {
+      const blob = await put(`assets/${filename}`, file, {
+        access: "public",
+      });
+
+      return NextResponse.json({
+        success: true,
+        url: blob.url,
+        filename,
+        size: file.size,
+      });
+    }
+
+    // 2. Local Fallback (when working purely offline without cloud token)
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+    const uploadDir = path.join(process.cwd(), "public", "assets");
+    await mkdir(uploadDir, { recursive: true });
 
     const filePath = path.join(uploadDir, filename);
     await writeFile(filePath, buffer);
@@ -44,4 +57,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
