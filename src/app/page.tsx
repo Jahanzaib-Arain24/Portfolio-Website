@@ -79,7 +79,7 @@ export default async function PortfolioPage() {
 
   return (
     <main className="min-h-screen bg-[#090a0f] text-slate-100 flex flex-col">
-      <Navbar resumeUrl={profile?.resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf"} />
+      <Navbar resumeUrl={profile?.resumeUrl || "/assets/jahanzaib-dev.pdf"} />
 
       {profile && (
         <HeroSection

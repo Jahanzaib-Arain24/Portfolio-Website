@@ -44,7 +44,7 @@ export default function AboutSection({
   avatarUrl,
 }: AboutSectionProps) {
   const bioParagraphs = bio.split("\n\n");
-  const actualResumeUrl = resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf";
+  const actualResumeUrl = resumeUrl || "/assets/jahanzaib-dev.pdf";
   const photoUrl = avatarUrl || "/assets/about-me.png";
 
   let parsedPillars: PillarItem[] = [];

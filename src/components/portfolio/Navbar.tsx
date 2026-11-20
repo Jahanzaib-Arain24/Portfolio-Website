@@ -20,7 +20,7 @@ const navLinks = [
   { name: "Contact", section: "contact", path: "/contact" },
 ];
 
-export default function Navbar({ resumeUrl = "/assets/Jahanzaib-Resume.pdf" }: NavbarProps) {
+export default function Navbar({ resumeUrl = "/assets/jahanzaib-dev.pdf" }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");

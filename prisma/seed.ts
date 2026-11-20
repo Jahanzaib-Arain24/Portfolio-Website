@@ -34,7 +34,7 @@ async function main() {
       heroBadge: "🟢 Available for Full-Time Roles & High-Impact Contracts (Remote Worldwide)",
       primaryCTA: "Explore Projects",
       secondaryCTA: "View Full Resume",
-      resumeUrl: "/assets/Jahanzaib-Resume.pdf",
+      resumeUrl: "/assets/jahanzaib-dev.pdf",
       avatarUrl: "/assets/old-portfolio-full.png",
       heroCounters: JSON.stringify([
         { label: "Production Systems Shipped", value: "6+" },
@@ -56,7 +56,7 @@ async function main() {
       heroBadge: "🟢 Available for Full-Time Roles & High-Impact Contracts (Remote Worldwide)",
       primaryCTA: "Explore Projects",
       secondaryCTA: "View Full Resume",
-      resumeUrl: "/assets/Jahanzaib-Resume.pdf",
+      resumeUrl: "/assets/jahanzaib-dev.pdf",
       avatarUrl: "/assets/old-portfolio-full.png",
       heroCounters: JSON.stringify([
         { label: "Production Systems Shipped", value: "6+" },

@@ -31,7 +31,7 @@ model Profile {
   heroBadge     String       @default("🟢 Available for Full-Time Roles & High-Impact Contracts (Remote Worldwide)")
   primaryCTA    String       @default("Explore Projects")
   secondaryCTA  String       @default("Download Resume")
-  resumeUrl     String       @default("/assets/Jahanzaib-Resume-Frontend-Engineer.pdf")
+  resumeUrl     String       @default("/assets/jahanzaib-dev.pdf")
   avatarUrl     String?
   heroCounters  String       // JSON string: array of { label, value }
 

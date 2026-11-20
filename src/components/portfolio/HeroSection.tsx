@@ -39,7 +39,7 @@ export default function HeroSection({
   location,
   socialLinks: dbSocialLinks,
 }: HeroSectionProps) {
-  const actualResumeUrl = resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf";
+  const actualResumeUrl = resumeUrl || "/assets/jahanzaib-dev.pdf";
 
   const typingRolesList = typingRoles
     ? typingRoles.split(",").map((r) => r.trim()).filter(Boolean)

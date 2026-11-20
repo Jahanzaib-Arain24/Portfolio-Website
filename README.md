@@ -101,7 +101,7 @@ Modern frontend & full-stack engineering isn't just about putting components on 
 - 🔍 **Interactive Project Case Study Modal**: Deep dive into system architecture, technical problems solved, live demo links, and GitHub repositories.
 - 🗄️ **Serverless Neon PostgreSQL Cloud DB**: Real-time cloud database syncing live edits made from mobile phone or laptop with instant production propagation.
 - 💾 **1-Click Local Database Backup Runner**: Double-click `backup-database.bat` to instantly export all cloud database records into timestamped JSON files.
-- 📑 **Integrated Resume Hub**: Direct access and embedded download for official engineering CV (`/assets/Jahanzaib-Resume-Frontend-Engineer.pdf`).
+- 📑 **Integrated Resume Hub**: Direct access and embedded download for official engineering CV (`/assets/jahanzaib-dev.pdf`).
 - ⚡ **1-Click Windows Dev Launcher**: Double-click `start.bat` to spin up localhost immediately.
 
 ---
@@ -228,7 +228,7 @@ portfolio-website/
 ├── backups/                               # Timestamped database snapshots (ignored from git)
 ├── public/                                # Optimized static production assets
 │   ├── assets/                            # High-resolution project banners & CV
-│   │   ├── Jahanzaib-Resume-Frontend-Engineer.pdf # Official Resume PDF
+│   │   ├── jahanzaib-dev.pdf                      # Official Resume PDF
 │   │   ├── Vantix-Digital.png             # Project showcase banner
 │   │   ├── Little-Lemon.png               # Meta capstone banner
 │   │   ├── voice-of-spain.png             # Case study banner

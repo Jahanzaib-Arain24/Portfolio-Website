@@ -37,7 +37,7 @@ export default function ProfileAdminPage() {
     heroBadge: "",
     primaryCTA: "",
     secondaryCTA: "",
-    resumeUrl: "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf",
+    resumeUrl: "/assets/jahanzaib-dev.pdf",
     avatarUrl: "/assets/about-me.png",
     typingRoles: "Frontend Engineer, React.js & Next.js Developer, Full Stack Web Developer",
     aboutHeading: "Behind the Code & Architecture",
@@ -103,7 +103,7 @@ export default function ProfileAdminPage() {
           heroBadge: p.heroBadge || "🟢 Available for Full-Time Roles & High-Impact Contracts (Remote Worldwide)",
           primaryCTA: p.primaryCTA || "Explore Projects",
           secondaryCTA: p.secondaryCTA || "Download Resume",
-          resumeUrl: p.resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf",
+          resumeUrl: p.resumeUrl || "/assets/jahanzaib-dev.pdf",
           avatarUrl: p.avatarUrl || "/assets/about-me.png",
           typingRoles: p.typingRoles || "Frontend Engineer, React.js & Next.js Developer, Full Stack Web Developer",
           aboutHeading: p.aboutHeading || "Behind the Code & Architecture",
@@ -572,7 +572,7 @@ export default function ProfileAdminPage() {
 
                 <FileUploader
                   label="Complete Resume / Curriculum Vitae (PDF)"
-                  value={form.resumeUrl || "/assets/Jahanzaib-Resume-Frontend-Engineer.pdf"}
+                  value={form.resumeUrl || "/assets/jahanzaib-dev.pdf"}
                   onChange={(url) => {
                     setForm((prev) => ({ ...prev, resumeUrl: url }));
                     toast.success("Resume PDF selected! Click 'Save All Settings' to apply live.");
