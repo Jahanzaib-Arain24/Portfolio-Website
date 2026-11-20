@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { ProjectData } from "@/types";
-import { ExternalLink, Sparkles, CheckCircle, ChevronRight, X, Pin } from "lucide-react";
+import { ExternalLink, Sparkles, CheckCircle, ChevronRight, X } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -57,26 +57,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#15171C] via-transparent to-black/30 opacity-80 group-hover:opacity-50 transition-opacity" />
-
-                    {/* Top Floating Badges over Thumbnail */}
-                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
-                      <span className="text-[10px] font-mono uppercase px-2.5 py-1 rounded-md bg-[#0B0C0E]/85 backdrop-blur-md border border-white/10 text-[#CAD5E2]">
-                        {project.type}
-                      </span>
-                      <div className="flex items-center gap-1.5">
-                        {project.pinned && (
-                          <span className="flex items-center gap-1 text-[10px] font-bold text-amber-300 bg-[#AA151B]/90 backdrop-blur-md border border-[#F1BF00]/50 px-2.5 py-0.5 rounded-full shadow-lg">
-                            <Pin className="w-3 h-3 fill-amber-300 rotate-45" /> Pinned
-                          </span>
-                        )}
-                        {project.featured && (
-                          <span className="flex items-center gap-1 text-[10px] font-semibold text-[#F1BF00] bg-[#0B0C0E]/85 backdrop-blur-md border border-[#F1BF00]/40 px-2.5 py-0.5 rounded-full">
-                            <Sparkles className="w-3 h-3" /> Featured
-                          </span>
-                        )}
-                      </div>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#15171C]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 )}
 
