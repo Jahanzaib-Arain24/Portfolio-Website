@@ -73,10 +73,9 @@ async function main() {
     data: [
       { profileId: "default-profile", platform: "LinkedIn", url: "https://www.linkedin.com/in/jahanzaib-arain/", icon: "Linkedin", order: 1 },
       { profileId: "default-profile", platform: "GitHub", url: "https://github.com/Jahanzaib-Arain24", icon: "Github", order: 2 },
-      { profileId: "default-profile", platform: "WhatsApp", url: "https://wa.me/923123358542", icon: "MessageCircle", order: 3 },
-      { profileId: "default-profile", platform: "Email", url: "mailto:arainjhanzaib@gmail.com", icon: "Mail", order: 4 },
-      { profileId: "default-profile", platform: "Twitter / X", url: "https://twitter.com/", icon: "Twitter", order: 5 },
-      { profileId: "default-profile", platform: "Telegram", url: "https://t.me/", icon: "Send", order: 6 },
+      { profileId: "default-profile", platform: "Facebook", url: "https://www.facebook.com/Jahanzaib.Arain24", icon: "Facebook", order: 3 },
+      { profileId: "default-profile", platform: "Instagram", url: "https://www.instagram.com/jahanzaib.arain24/", icon: "Instagram", order: 4 },
+      { profileId: "default-profile", platform: "WhatsApp", url: "https://wa.me/923123358542", icon: "MessageCircle", order: 5 },
     ]
   });
 
